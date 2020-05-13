@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>YN Network - Something New!</title>
+    <style>
+
+        body, h2 {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: purple;
+            color: #fff;
+        }
+
+        #topbar {
+            background: #333;
+            color: #fff;
+        }
+
+            #topbar a {
+                color: inherit;
+            }
+    </style>
+</head>
+<body>
+    <div id="topbar">
+        <a href="#">Login Here</a> -
+        <a href="#">Register Here</a>
+    </div>
+    <header>
+        <h2>The YN NETWORK</h2>
+        <p>You don't know what you'll find!</p>
+    </header>
+    <nav>
+        <a href="#">Questions & Answers</a>
+        <a href="#">Games</a>
+        <a href="#">Weather</a>
+    </nav>
+    <hr>
+    @RenderBody()
+
+    <footer>
+        <div style="margin-top:50px"></div>
+        @DateTime.Now.Year.ToString()
+        <small>Made in Serbia.</small>
+    </footer>
+</body>
+</html>
