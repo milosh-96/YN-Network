@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using YN_Network.Models;
 
 namespace YN_Network.Data
 {
@@ -12,5 +13,7 @@ namespace YN_Network.Data
             : base(options)
         {
         }
+
+        public DbSet<Question> Questions { get; set; }
     }
 }
