@@ -36,11 +36,20 @@
         <h2>The YN NETWORK</h2>
         <p>You don't know what you'll find!</p>
     </header>
-    <nav>
+    <nav style="display:inline-block">
         <a href="#">Questions & Answers</a>
         <a href="#">Games</a>
         <a href="#">Weather</a>
     </nav>
+    |
+    <div style="display:inline-block">
+        <strong>YN Index: </strong>
+        <form method="get" style="display:inline-block" asp-area="Search" asp-controller="Query" asp-action="Index">
+            <input name="query" type="text" placeholder="Search!"><button>Search!</button>
+            <button>Submit Link</button>
+        </form>
+       
+    </div>
     <hr>
     @RenderBody()
 

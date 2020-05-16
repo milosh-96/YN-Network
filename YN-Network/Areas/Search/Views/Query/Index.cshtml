@@ -1,0 +1,8 @@
+﻿@model YN_Network.Areas.Search.ViewModels.ResultViewModel
+<h2>Search results for @Model.Query</h2>
+@foreach (YN_Network.Areas.Search.Models.Topic relatedTopic in Model.RelatedTopics){
+<div>
+    <img style="width:64px;display:inline-block;vertical-align:middle" src="@relatedTopic.Icon.URL" alt="@Model.Query" height="64px" />
+    <div style="display:inline-block;vertical-align:middle"><h3>@relatedTopic.Text</h3></div>
+</div>
+}

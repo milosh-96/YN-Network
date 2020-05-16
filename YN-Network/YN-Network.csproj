@@ -17,9 +17,17 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.4" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="ViewModels\" />
+    <Folder Include="Areas\Search\" />
+    <Folder Include="Areas\Search\Controllers\" />
+    <Folder Include="Areas\Search\Views\" />
+    <Folder Include="Areas\Search\Views\Query\" />
+    <Folder Include="Areas\Search\ViewModels\" />
+    <Folder Include="Areas\Search\Models\" />
+    <Folder Include="Areas\Search\Services\" />
   </ItemGroup>
 </Project>
