@@ -4,33 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="/css/site.css" rel="stylesheet" type="text/css" />
     <title>YN Network - Something New!</title>
     <style>
 
-        body, h2 {
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background: purple;
-            color: #fff;
-        }
-
-        #topbar {
-            background: #333;
-            color: #fff;
-        }
-
-            #topbar a {
-                color: inherit;
-            }
+       
     </style>
 </head>
 <body>
     <div id="topbar">
-        <a href="#">Login Here</a> -
-        <a href="#">Register Here</a>
+        <div>
+            My IP: test
+        </div>
+        <div>
+            <span style="color:dodgerblue">i</span> <strong>Fact of day:</strong> Model.FactOfTheDay.Text <small>(Model.FactOfTheDay.Source)</small>
+         </div>
     </div>
     <header>
         <h2>The YN NETWORK</h2>
@@ -40,6 +28,8 @@
         <a href="#">Questions & Answers</a>
         <a href="#">Games</a>
         <a href="#">Weather</a>
+        <a asp-area="Jokes" asp-controler="Home" asp-action="Index">Jokes</a>
+        <a href="#">Countries</a>
     </nav>
     |
     <div style="display:inline-block">

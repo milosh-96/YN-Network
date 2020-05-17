@@ -8,7 +8,6 @@ namespace YN_Network.Areas.Search.Services
 {
     public class QueryService : IQueryService
     {
-        private QueryResult _queryResult = null;
         public QueryService()
         {
         }
@@ -18,21 +17,17 @@ namespace YN_Network.Areas.Search.Services
             
                 string searchUrl = String.Format("https://api.duckduckgo.com/?q={0}&format=json&pretty=1", query);
                 var json = new WebClient().DownloadString(searchUrl);
-                QueryResult queryResult = JsonSerializer.Deserialize<QueryResult>(json);
-                _queryResult = queryResult;
-            
-               return _queryResult.Topics;
+                QueryResult queryResult = JsonSerializer.Deserialize<QueryResult>(json);            
+                return queryResult.Topics;
         }
         public ICollection<Topic> GetRelatedTopics(string query)
         {
            
                 string searchUrl = String.Format("https://api.duckduckgo.com/?q={0}&format=json&pretty=1", query);
                 var json = new WebClient().DownloadString(searchUrl);
-                QueryResult queryResult = JsonSerializer.Deserialize<QueryResult>(json);
-                _queryResult = queryResult;
-         
+                QueryResult queryResult = JsonSerializer.Deserialize<QueryResult>(json);         
             
-                return _queryResult.RelatedTopics;
+                return queryResult.RelatedTopics;
         }
 
        

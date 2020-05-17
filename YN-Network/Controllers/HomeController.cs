@@ -21,7 +21,7 @@ namespace YN_Network.Controllers
 
         public IActionResult Index()
         {
-            HomeViewModel model = new HomeViewModel();
+            LayoutViewModel model = new LayoutViewModel();
             return View(model);
         }
 

@@ -25,7 +25,6 @@ namespace YN_Network.Areas.Search.Controllers
         {
             ResultViewModel resultViewModel = new ResultViewModel();
             resultViewModel.Query = Request.Query["query"];
-            resultViewModel.Topics = _queryService.GetTopics(resultViewModel.Query);
             resultViewModel.RelatedTopics = _queryService.GetRelatedTopics(resultViewModel.Query);
 
             return View(resultViewModel);

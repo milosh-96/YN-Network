@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using YN_Network.Areas.Search.Services;
+using YN_Network.Areas.Jokes.Services;
 
 namespace YN_Network
 {
@@ -37,6 +38,7 @@ namespace YN_Network
             services.AddRazorPages();
 
             services.AddScoped<IQueryService, QueryService>();
+            services.AddScoped<IJokesService, JokesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,6 +69,10 @@ namespace YN_Network
                     name: "Search",
                     pattern: "{area:exists}/{controller=Query}/{action=Index}/{query?}"
                   );
+                endpoints.MapControllerRoute(
+                    name: "Jokes",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                    );
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

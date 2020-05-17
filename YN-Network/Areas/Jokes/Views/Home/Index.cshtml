@@ -1,0 +1,16 @@
+﻿@model YN_Network.Areas.Jokes.ViewModels.JokesIndexViewModel
+
+<h2>Jokes</h2>
+
+<div>
+
+    @foreach(YN_Network.Areas.Jokes.Models.Joke joke in Model.Jokes)
+    {
+        <div>
+            <p><em>@joke.Id</em>:</p>
+            <p><strong>@joke.PunchLine</strong></p>
+            <hr />
+        </div>
+    }
+
+</div>
