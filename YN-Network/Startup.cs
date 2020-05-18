@@ -71,7 +71,7 @@ namespace YN_Network
                   );
                 endpoints.MapControllerRoute(
                     name: "Jokes",
-                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{type?}"
                     );
                 endpoints.MapControllerRoute(
                     name: "default",

@@ -10,16 +10,17 @@ using YN_Network.Areas.Search.ViewModels;
 
 namespace YN_Network.Areas.Search.Controllers
 {
+    [Area("Search")]
+
     public class QueryController : Controller
     {
+
         private IQueryService _queryService;
 
         public QueryController(IQueryService queryService)
         {
             _queryService = queryService;
         }
-        private string apiKey = "beMtdheVb1mshlTUECCSzINq9TgGp1iYNcWjsna6DcnXodHhFM";
-        [Area("Search")]
         // GET: //
         public IActionResult Index()
         {

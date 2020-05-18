@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using YN_Network.Models;
-using YN_Network.ViewModels;
 
 namespace YN_Network.Controllers
 {
@@ -21,8 +20,7 @@ namespace YN_Network.Controllers
 
         public IActionResult Index()
         {
-            LayoutViewModel model = new LayoutViewModel();
-            return View(model);
+            return View();
         }
 
         public IActionResult Privacy()

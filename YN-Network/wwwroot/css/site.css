@@ -20,3 +20,15 @@ header {
     #topbar a {
         color: inherit;
     }
+
+
+    #content {
+        width:95%;
+        margin:0 auto;
+    }
+
+
+    .logo a {
+        color:#fff;
+        text-decoration:none;
+    }

@@ -4,13 +4,40 @@
 
 <div>
 
-    @foreach(YN_Network.Areas.Jokes.Models.Joke joke in Model.Jokes)
+    @if (Model.Jokes.Count > 0)
+    {
+    @foreach (YN_Network.Areas.Jokes.Models.Joke joke in Model.Jokes)
     {
         <div>
-            <p><em>@joke.Id</em>:</p>
+            <p><em>@joke.Setup</em></p>
             <p><strong>@joke.PunchLine</strong></p>
+            <p>type: <em>
+                <a
+                            asp-area="Jokes"
+                            asp-controller="Home"
+                            asp-action="Index"
+                            asp-route-type="@joke.Type">
+                @joke.Type
+                </a>
+                 </em></p>
             <hr />
         </div>
+    }
+    }
+    else
+    {
+        <div>Unfortunately there are no jokes
+        @if(Model.FilteredByType)
+        {
+            <span>for this type</span>
+        }
+        :(
+
+    </div>
+    @if(Model.FilteredByType)
+    {
+        <a asp-area="Jokes" asp-controller="Home" asp-action="Index">Go Back</a>
+    }
     }
 
 </div>

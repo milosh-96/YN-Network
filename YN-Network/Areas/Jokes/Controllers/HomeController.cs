@@ -24,11 +24,24 @@ namespace YN_Network.Areas.Jokes.Controllers
             _jokesServices = jokesService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string type)
         {
+            
             JokesIndexViewModel viewModel = new JokesIndexViewModel();
-            viewModel.Jokes = _jokesServices.GetJokes();
+            if(type != null)
+            {
+                viewModel.Jokes = _jokesServices.GetJokes(type);
+                viewModel.FilteredByType = true;
+            }
+            else
+            {
+                viewModel.Jokes = _jokesServices.GetJokes();
+
+            }
             return View(viewModel);
         }
+
+
     }
 }
+

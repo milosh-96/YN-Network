@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@{
+    YN_Network.Models.Fact fact = YN_Network.Services.GlobalService.GetRandomFact();
+    YN_Network.Models.MyIpAddress myIp = YN_Network.Services.GlobalService.GetMyIpAddress();
+
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,15 +19,14 @@
 <body>
     <div id="topbar">
         <div>
-            My IP: test
+            My IP: @myIp.Ip
         </div>
         <div>
-            <span style="color:dodgerblue">i</span> <strong>Fact of day:</strong> Model.FactOfTheDay.Text <small>(Model.FactOfTheDay.Source)</small>
+            <span style="color:dodgerblue">i</span> <strong>Fact of day:</strong> @fact.Text <small>(@fact.Source)</small>
          </div>
     </div>
     <header>
-        <h2>The YN NETWORK</h2>
-        <p>You don't know what you'll find!</p>
+        <h2 class="logo"><a asp-area="" asp-controller="Home" asp-action="Index">The YN NETWORK</a></h2>
     </header>
     <nav style="display:inline-block">
         <a href="#">Questions & Answers</a>
@@ -41,7 +45,9 @@
        
     </div>
     <hr>
-    @RenderBody()
+    <div id="content">
+        @RenderBody()
+    </div>
 
     <footer>
         <div style="margin-top:50px"></div>

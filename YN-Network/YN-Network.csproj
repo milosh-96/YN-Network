@@ -37,5 +37,6 @@
     <Folder Include="Areas\Jokes\Models\" />
     <Folder Include="Areas\Jokes\Views\Home\" />
     <Folder Include="Areas\Jokes\ViewModels\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>
