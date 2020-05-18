@@ -1,1 +1,13 @@
-﻿
+﻿@model YN_Network.ViewModels.HomeViewModel
+
+
+    <div class="comic" style="width:250px">
+        <h2>
+            Today Comic
+        </h2>
+        <hr />
+        <h3>@Model.Comic.Title</h3>
+        <p><em>@Model.Comic.Alt</em></p>
+        <img src="@Model.Comic.Img" width="100%" />
+        <small>provided by <a href="https://xkcd.com" target="_blank">xkcd</a></small>
+    </div>

@@ -26,12 +26,13 @@
          </div>
     </div>
     <header>
-        <h2 class="logo"><a asp-area="" asp-controller="Home" asp-action="Index">The YN NETWORK</a></h2>
+        <h2 class="logo"><a asp-area="" asp-controller="Home" asp-action="Index">YN NETWORK</a></h2>
     </header>
     <nav style="display:inline-block">
         <a href="#">Questions & Answers</a>
         <a href="#">Games</a>
         <a href="#">Weather</a>
+        <a href="#">Comics</a>
         <a asp-area="Jokes" asp-controler="Home" asp-action="Index">Jokes</a>
         <a href="#">Countries</a>
     </nav>
@@ -52,7 +53,7 @@
     <footer>
         <div style="margin-top:50px"></div>
         @DateTime.Now.Year.ToString()
-        <small>Made in Serbia.</small>
+        <small>&copy; YN Network. All Rights Reserved.</small>
     </footer>
 </body>
 </html>

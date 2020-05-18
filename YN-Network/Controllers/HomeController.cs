@@ -5,22 +5,29 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using YN_Network.Areas.Comics.Services;
 using YN_Network.Models;
+
+using YN_Network.ViewModels;
 
 namespace YN_Network.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IComicService _comicService;
+        public HomeController(ILogger<HomeController> logger,IComicService comicService)
         {
             _logger = logger;
+            _comicService = comicService;
+
         }
 
         public IActionResult Index()
         {
-            return View();
+            HomeViewModel viewModel = new HomeViewModel();
+            viewModel.Comic = _comicService.GetTodayComic();
+            return View(viewModel);
         }
 
         public IActionResult Privacy()
