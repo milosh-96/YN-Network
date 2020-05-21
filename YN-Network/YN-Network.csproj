@@ -18,10 +18,17 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.4" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Core" Version="3.1.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Activity\Controllers\" />
+    <Folder Include="Areas\Activity\Data\" />
+    <Folder Include="Areas\Activity\Models\" />
+    <Folder Include="Areas\Activity\Views\" />
+    <Folder Include="Areas\News\Data\" />
+    <Folder Include="Areas\News\Models\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Areas\Search\" />
     <Folder Include="Areas\Search\Controllers\" />
@@ -41,9 +48,5 @@
     <Folder Include="Areas\Comics\" />
     <Folder Include="Areas\Comics\Services\" />
     <Folder Include="Areas\Comics\Models\" />
-    <Folder Include="Areas\News\" />
-    <Folder Include="Areas\News\Controllers\" />
-    <Folder Include="Areas\News\Views\" />
-    <Folder Include="Areas\News\Views\Home\" />
   </ItemGroup>
 </Project>
