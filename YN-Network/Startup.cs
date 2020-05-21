@@ -76,6 +76,10 @@ namespace YN_Network
                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{type?}"
                     );
                 endpoints.MapControllerRoute(
+                    name: "News",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{category?}"
+                    );
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();

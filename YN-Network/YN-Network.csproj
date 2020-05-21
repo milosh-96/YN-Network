@@ -42,5 +42,8 @@
     <Folder Include="Areas\Comics\Services\" />
     <Folder Include="Areas\Comics\Models\" />
     <Folder Include="Areas\News\" />
+    <Folder Include="Areas\News\Controllers\" />
+    <Folder Include="Areas\News\Views\" />
+    <Folder Include="Areas\News\Views\Home\" />
   </ItemGroup>
 </Project>
