@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Text.Json;
+using Microsoft.AspNetCore.Http;
 using YN_Network.Models;
 
 namespace YN_Network.Services
@@ -15,8 +16,11 @@ namespace YN_Network.Services
 
         public static MyIpAddress GetMyIpAddress()
         {
-            var myIpJson = new WebClient().DownloadString("https://api.ipify.org/?format=json");
-            return JsonSerializer.Deserialize<MyIpAddress>(myIpJson);
+            //var myIpJson = new WebClient().DownloadString("https://api.ipify.org/?format=json");
+            // return JsonSerializer.Deserialize<MyIpAddress>(myIpJson);
+            IHttpContextAccessor accessor = new HttpContextAccessor();
+            MyIpAddress myIp = new MyIpAddress { Ip = accessor.HttpContext.Connection.RemoteIpAddress.ToString() };
+            return myIp;
         }
 
     }
