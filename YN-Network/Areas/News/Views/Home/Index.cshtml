@@ -1,2 +1,30 @@
-﻿<h1>Index</h1>
-<em>View your index files...</em>
+﻿@model YN_Network.Areas.News.ViewModels.HomeViewModel
+<h2>Latest News</h2>
+
+@foreach(YN_Network.Areas.News.Models.Article article in Model.Articles)
+{
+    <div class="news-item">
+        <h3>@article.Title</h3>
+        <em>@article.PublishedAt.ToString()</em>
+        <div>
+            <img src="@article.UrlToImage" width="300px" alt="@article.Title" />
+        </div>
+
+        <div>
+            <p>
+                @article.Description
+            </p>
+        </div>
+
+        <div>
+            @article.Source.Name
+        </div>
+        <hr />
+    </div>
+}
+
+
+
+<hr />
+
+Powered by: <a href="#">News API</a>

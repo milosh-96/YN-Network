@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using YN_Network.Areas.Search.Services;
 using YN_Network.Areas.Jokes.Services;
 using YN_Network.Areas.Comics.Services;
+using YN_Network.Areas.News.Services;
 
 namespace YN_Network
 {
@@ -41,6 +42,7 @@ namespace YN_Network
             services.AddScoped<IQueryService, QueryService>();
             services.AddScoped<IJokesService, JokesService>();
             services.AddScoped<IComicService, ComicService>();
+            services.AddScoped<INewsService, NewsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
