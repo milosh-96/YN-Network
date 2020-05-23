@@ -47,5 +47,7 @@
     <Folder Include="Areas\Comics\" />
     <Folder Include="Areas\Comics\Services\" />
     <Folder Include="Areas\Comics\Models\" />
+    <Folder Include="Areas\News\Views\Partials\" />
+    <Folder Include="Areas\News\Views\Widgets\" />
   </ItemGroup>
 </Project>

@@ -33,3 +33,17 @@ header {
         color:#fff;
         text-decoration:none;
     }
+
+    #home-page,footer {
+        clear:both;
+    }
+    #home-page .home-page-column {
+            width: 250px;
+            float:left;
+            padding:5px;
+            box-sizing:border-box;
+    }
+    #home-page .home-page-column:last-child {
+        clear:right;
+    }
+    

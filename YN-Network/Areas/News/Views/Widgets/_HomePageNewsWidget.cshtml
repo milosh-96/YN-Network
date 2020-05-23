@@ -1,0 +1,9 @@
+﻿@model ICollection<YN_Network.Areas.News.Models.Article>
+<h2>News</h2>
+<hr />
+            <small>Provided by: <a href="#">News API</a></small>
+
+@foreach (YN_Network.Areas.News.Models.Article article in Model)
+{
+    Html.RenderPartial("../../Areas/News/Views/Partials/_ArticleItem", article);
+}
