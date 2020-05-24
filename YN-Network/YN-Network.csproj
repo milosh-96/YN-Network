@@ -49,5 +49,7 @@
     <Folder Include="Areas\Comics\Models\" />
     <Folder Include="Areas\News\Views\Partials\" />
     <Folder Include="Areas\News\Views\Widgets\" />
+    <Folder Include="Areas\Comics\Views\" />
+    <Folder Include="Areas\Comics\Views\Widgets\" />
   </ItemGroup>
 </Project>

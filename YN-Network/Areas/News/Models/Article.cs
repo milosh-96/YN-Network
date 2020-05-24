@@ -13,7 +13,7 @@ namespace YN_Network.Areas.News.Models
         public string Description
         {
             get { return description; }
-            set { description = Regex.Replace(value, "<.*?>", String.Empty); }
+            set { if (value == null) { description = ""; } else { description = Regex.Replace(value, "<.*?>", String.Empty); } }
         }
 
         public string Url { get; set; }

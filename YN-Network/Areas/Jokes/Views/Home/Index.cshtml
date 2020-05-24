@@ -1,17 +1,19 @@
 ﻿@model YN_Network.Areas.Jokes.ViewModels.JokesIndexViewModel
-
+<div class="row">
 <h2>Jokes</h2>
 
-<div>
+<div class="col-12">
 
     @if (Model.Jokes.Count > 0)
     {
     @foreach (YN_Network.Areas.Jokes.Models.Joke joke in Model.Jokes)
     {
-        <div>
-            <p><em>@joke.Setup</em></p>
-            <p><strong>@joke.PunchLine</strong></p>
-            <p>type: <em>
+        <div class="joke" style="width:100%">
+            <div class="content">
+            <div class="setup-joke"><em>@joke.Setup</em></div>
+            <div class="punchline"><strong>@joke.PunchLine</strong></div>
+                </div>
+            <div class="type">type: <em>
                 <a
                             asp-area="Jokes"
                             asp-controller="Home"
@@ -19,7 +21,7 @@
                             asp-route-type="@joke.Type">
                 @joke.Type
                 </a>
-                 </em></p>
+                 </em></div>
             <hr />
         </div>
     }
@@ -40,4 +42,5 @@
     }
     }
 
+</div>
 </div>

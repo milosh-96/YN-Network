@@ -3,6 +3,8 @@
     padding: 0;
 }
 
+
+
 header {
     background: purple;
     color: #fff;
@@ -13,8 +15,9 @@ header {
     color: #fff;
 }
 
+    #topbar #fact {
+    }
 #topbar > div {
-    display:inline-block;
 }
 
     #topbar a {
@@ -23,8 +26,6 @@ header {
 
 
     #content {
-        width:95%;
-        margin:0 auto;
     }
 
 
@@ -35,13 +36,16 @@ header {
     }
 
     #home-page,footer {
-        clear:both;
     }
+    
     #home-page .home-page-column {
             width: 250px;
             float:left;
             padding:5px;
             box-sizing:border-box;
+    }
+    #home-page .home-page-column.wide {
+        width:600px;
     }
     #home-page .home-page-column:last-child {
         clear:right;
