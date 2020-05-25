@@ -51,5 +51,6 @@
     <Folder Include="Areas\News\Views\Widgets\" />
     <Folder Include="Areas\Comics\Views\" />
     <Folder Include="Areas\Comics\Views\Widgets\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 </Project>

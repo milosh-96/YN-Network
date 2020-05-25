@@ -1,13 +1,26 @@
 ﻿@model YN_Network.Areas.Search.ViewModels.ResultViewModel
-<h2>Search results for @Model.Query</h2>
-<div>
-    @foreach (YN_Network.Areas.Search.Models.Topic topic in Model.RelatedTopics)
-    {
-        @if (topic.Text != String.Empty)
-        {
-            <div>
-                <h3>@topic.Text</h3>
-            </div>
-        }
-    }
+<div class="row">
+    <div class="columns small-12">
+        <h2>Search results for @Model.Query</h2>
+        <div>
+            @foreach (YN_Network.Areas.Search.Models.Topic topic in Model.RelatedTopics)
+            {
+                @if (topic.Text != String.Empty)
+                {
+                    <div class="callout">
+                        <div class="row">
+                            <div class="columns small-4 medium-2">
+                                <img src="@topic.Icon.URL" width="100%" />
+                            </div>
+                            <div class="columns small-8 medium-10">
+                                <strong>@topic.Text</strong>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+                        }
+        </div>
+
+    </div>
 </div>

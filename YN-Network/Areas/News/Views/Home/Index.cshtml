@@ -1,14 +1,14 @@
 ﻿@model YN_Network.Areas.News.ViewModels.HomeViewModel
-<h2>Latest News</h2>
 
-@foreach (YN_Network.Areas.News.Models.Article article in Model.Articles)
-{
+<div class="row">
+    <div class="columns small-12 medium-8">
+        <h2>Latest News</h2>
 
-    Html.RenderPartial("../Partials/_ArticleItem", article);
-}
+        @foreach (YN_Network.Areas.News.Models.Article article in Model.Articles)
+        {
 
-
-
-<hr />
-
-Powered by: <a href="#">News API</a>
+            Html.RenderPartial("../Partials/_ArticleItem", article);
+        }
+        Powered by: <a href="#">News API</a>
+    </div>
+</div>

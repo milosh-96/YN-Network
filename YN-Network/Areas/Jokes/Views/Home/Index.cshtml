@@ -1,46 +1,46 @@
 ﻿@model YN_Network.Areas.Jokes.ViewModels.JokesIndexViewModel
 <div class="row">
-<h2>Jokes</h2>
+    <div class="small-12">
+        <h2>Jokes</h2>
 
-<div class="col-12">
-
-    @if (Model.Jokes.Count > 0)
-    {
-    @foreach (YN_Network.Areas.Jokes.Models.Joke joke in Model.Jokes)
-    {
-        <div class="joke" style="width:100%">
-            <div class="content">
-            <div class="setup-joke"><em>@joke.Setup</em></div>
-            <div class="punchline"><strong>@joke.PunchLine</strong></div>
-                </div>
-            <div class="type">type: <em>
-                <a
-                            asp-area="Jokes"
-                            asp-controller="Home"
-                            asp-action="Index"
-                            asp-route-type="@joke.Type">
-                @joke.Type
-                </a>
-                 </em></div>
-            <hr />
-        </div>
-    }
-    }
-    else
-    {
-        <div>Unfortunately there are no jokes
-        @if(Model.FilteredByType)
+       @if (Model.Jokes.Count > 0)
         {
-            <span>for this type</span>
+            @foreach (YN_Network.Areas.Jokes.Models.Joke joke in Model.Jokes)
+            {
+                <div class="joke callout" style="width:100%">
+                    <div class="content">
+                        <div class="setup-joke"><em>@joke.Setup</em></div>
+                        <div class="punchline"><strong>@joke.PunchLine</strong></div>
+                    </div>
+                    <div class="type">
+                        type: <em>
+                            <a asp-area="Jokes"
+                               asp-controller="Home"
+                               asp-action="Index"
+                               asp-route-type="@joke.Type">
+                                @joke.Type
+                            </a>
+                        </em>
+                    </div>
+                </div>
+            }
         }
-        :(
+        else
+        {
+            <div class="callout alert">
+                Unfortunately there are no jokes
+                @if (Model.FilteredByType)
+                {
+                    <span>for this type</span>
+                }
+                :(
+
+            </div>
+            @if (Model.FilteredByType)
+            {
+                <a asp-area="Jokes" asp-controller="Home" asp-action="Index">Go Back</a>
+            }
+        }
 
     </div>
-    @if(Model.FilteredByType)
-    {
-        <a asp-area="Jokes" asp-controller="Home" asp-action="Index">Go Back</a>
-    }
-    }
-
-</div>
 </div>

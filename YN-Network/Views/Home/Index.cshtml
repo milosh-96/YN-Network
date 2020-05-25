@@ -1,16 +1,16 @@
 ﻿@model YN_Network.ViewModels.HomeViewModel
 
     <div id="home-page" class="row">
-        <div class="col-3" id="home-comic">
+        <div class="columns small-12 medium-3" id="home-comic">
             @{
                 Html.RenderPartial("../../Areas/Comics/Views/Widgets/_HomePageComicWidget", Model.Comic);
             }
         </div>
-        <div class="col-6" id="home-news">
+        <div class="columns small-12 medium-6" id="home-news">
            @{
                Html.RenderPartial("../../Areas/News/Views/Widgets/_HomePageNewsWidget", Model.Articles);
            }
         </div>
-        <div class="col-3">
+        <div class="columns small-12 medium-3">
         </div>
     </div>
