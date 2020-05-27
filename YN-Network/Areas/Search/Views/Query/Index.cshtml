@@ -5,7 +5,7 @@
         <div>
             @foreach (YN_Network.Areas.Search.Models.Topic topic in Model.RelatedTopics)
             {
-                @if (topic.Text != String.Empty)
+                @if (topic.Text != null)
                 {
                     <div class="callout">
                         <div class="row">
