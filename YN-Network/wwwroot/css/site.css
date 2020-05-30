@@ -17,37 +17,39 @@ header {
 
     #topbar #fact {
     }
-#topbar > div {
-}
+
+    #topbar > div {
+    }
 
     #topbar a {
         color: inherit;
     }
 
 
-    #content {
-    }
+#content {
+}
 
 
-    .logo a {
-        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color:#fff;
-        text-decoration:none;
-    }
+.logo a {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    text-decoration: none;
+}
 
-    #home-page,footer {
-    }
-    
+#home-page, footer {
+}
+
     #home-page .home-page-column {
-            width: 250px;
-            float:left;
-            padding:5px;
-            box-sizing:border-box;
+        width: 250px;
+        float: left;
+        padding: 5px;
+        box-sizing: border-box;
     }
-    #home-page .home-page-column.wide {
-        width:600px;
-    }
-    #home-page .home-page-column:last-child {
-        clear:right;
-    }
-    
+
+        #home-page .home-page-column.wide {
+            width: 600px;
+        }
+
+        #home-page .home-page-column:last-child {
+            clear: right;
+        }

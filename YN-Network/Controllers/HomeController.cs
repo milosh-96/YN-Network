@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using YN_Network.Areas.Comics.Services;
+using YN_Network.Areas.Jokes.Services;
 using YN_Network.Areas.News.Services;
 using YN_Network.Models;
 
@@ -18,11 +19,16 @@ namespace YN_Network.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IComicService _comicService;
         private readonly INewsService _newsService;
-        public HomeController(ILogger<HomeController> logger,IComicService comicService,INewsService newsService)
+        private readonly IJokesService _jokesService;
+        public HomeController(ILogger<HomeController> logger,
+            IComicService comicService,
+            INewsService newsService,
+            IJokesService jokesService)
         {
             _logger = logger;
             _comicService = comicService;
             _newsService = newsService;
+            _jokesService = jokesService; 
 
         }
 
@@ -31,6 +37,7 @@ namespace YN_Network.Controllers
             HomeViewModel viewModel = new HomeViewModel();
             viewModel.Comic = _comicService.GetTodayComic();
             viewModel.Articles = _newsService.GetTopHeadlines();
+            viewModel.Joke = _jokesService.GetRandomJoke();
             return View(viewModel);
         }
 

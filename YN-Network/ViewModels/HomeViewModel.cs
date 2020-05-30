@@ -8,6 +8,7 @@ namespace YN_Network.ViewModels
     {
         public YN_Network.Areas.Comics.Models.Comic Comic { get; set; }
         public ICollection<YN_Network.Areas.News.Models.Article> Articles { get; set; }
+        public YN_Network.Areas.Jokes.Models.Joke Joke { get; set; }
 
         public HomeViewModel()
         {

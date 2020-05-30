@@ -28,7 +28,7 @@ namespace YN_Network.Areas.Jokes.Services
         public Joke GetRandomJoke()
         {
             string jokeJson = _webClient.DownloadString(String.Format("{0}/{1}", this.jokesUrl, "random"));
-            return JsonSerializer.Deserialize<Joke>(jokeJson);
+            return JsonSerializer.Deserialize<Joke>(jokeJson, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
     }
 }

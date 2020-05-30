@@ -12,6 +12,6 @@ namespace YN_Network.Areas.News.Services
         public ICollection<YN_Network.Areas.News.Models.Article> GetTopHeadlines();
 
         // if source is passed we will change the source country
-        public ICollection<YN_Network.Areas.News.Models.Article> GetTopHeadlines(string source);
+        public ICollection<YN_Network.Areas.News.Models.Article> GetTopHeadlines(string country);
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using YN_Network.Areas.News.Models;
 using YN_Network.Areas.News.Services;
 
 namespace YN_Network.Areas.News.Controllers
@@ -22,7 +23,15 @@ namespace YN_Network.Areas.News.Controllers
         {
             ViewModels.HomeViewModel viewModel = new ViewModels.HomeViewModel();
 
-            viewModel.Articles = _newsService.GetTopHeadlines();
+            string country = Request.Query["country"];
+            if (country != null)
+            {
+                viewModel.Articles = _newsService.GetTopHeadlines(country);
+            }
+            else
+            {
+                viewModel.Articles = _newsService.GetTopHeadlines();
+            }
             
             return View(viewModel);
         }

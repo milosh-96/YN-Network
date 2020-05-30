@@ -70,6 +70,10 @@ namespace YN_Network
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                   name: "Questions",
+                   pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                 );
+                endpoints.MapControllerRoute(
                     name: "Search",
                     pattern: "{area:exists}/{controller=Query}/{action=Index}/{query?}"
                   );

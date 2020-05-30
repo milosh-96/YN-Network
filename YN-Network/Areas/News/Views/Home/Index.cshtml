@@ -3,6 +3,32 @@
 <div class="row">
     <div class="columns small-12 medium-8">
         <h2>Latest News</h2>
+    </div>
+    <div class="columns small-12 medium-4">
+        <form asp-area="News" asp-controller="News" asp-action="Index">
+            <div class="input-group">
+                <div class="input-group-label">
+                    Country
+                </div>
+                <select name="country" class="input-group-field">
+                    <option value="us">USA</option>
+                    <option value="de">Germany</option>
+                    <option value="rs">Serbia</option>
+                    <option value="se">Sweden</option>
+                    <option value="ru">Russia</option>
+                    <option value="bg">Bulgaria</option>
+                </select>
+                <div class="input-group-button">
+                    <input type="submit" class="input-group-submit" />
+
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+<div class="row">
+    <div class="columns small-12">
 
         @foreach (YN_Network.Areas.News.Models.Article article in Model.Articles)
         {
