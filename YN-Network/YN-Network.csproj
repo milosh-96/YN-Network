@@ -50,10 +50,8 @@
         <Folder Include="wwwroot\images\" />
         <Folder Include="Areas\Jokes\Views\Widgets\" />
         <Folder Include="Areas\Jokes\Views\Partials\" />
-        <Folder Include="Areas\Questions\" />
         <Folder Include="Areas\Questions\Controllers\" />
         <Folder Include="Areas\Questions\Models\" />
         <Folder Include="Areas\Questions\Services\" />
-        <Folder Include="Areas\Questions\Views\" />
     </ItemGroup>
 </Project>
