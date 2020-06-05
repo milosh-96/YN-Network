@@ -71,7 +71,7 @@ namespace YN_Network
             {
                 endpoints.MapControllerRoute(
                    name: "Questions",
-                   pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                   pattern: "{area:exists}/{controller=Questions}/{action=Index}/{id?}"
                  );
                 endpoints.MapControllerRoute(
                     name: "Search",
