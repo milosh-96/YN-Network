@@ -1,16 +1,79 @@
-﻿    <div class="row">
+﻿@model IEnumerable<YN_Network.Areas.Questions.Models.Question>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="row">
         <div class="columns">
             An original YN Network feature. Coming Soon!
         </div>
     </div>
 
-<div class="row">
-    <div class="columns small-12 medium-8">
-        <h3>
-            Latest Questions
-        </h3>
+    <div class="row">
+        <div class="columns small-12 medium-8">
+            <h3>
+                Latest Questions
+            </h3>
+        </div>
+        <div class="columns small-12 medium-4">
+            <h3>Most Popular</h3>
+        </div>
     </div>
-    <div class="columns small-12 medium-4">
-        <h3>Most Popular</h3>
+    <div class="row">
+        <div class="columns small-12 medium-4">
+            <p>
+                <a asp-action="Create">Create New</a>
+            </p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.User)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedAt)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.User)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreatedAt)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
+    
+</body>
+</html>
