@@ -6,9 +6,6 @@
         <RootNamespace>YN_Network</RootNamespace>
     </PropertyGroup>
     <ItemGroup>
-        <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
-    </ItemGroup>
-    <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.2" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.2" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.2" />
@@ -54,5 +51,8 @@
         <Folder Include="Areas\Jokes\Views\Partials\" />
         <Folder Include="Areas\Questions\Models\" />
         <Folder Include="Areas\Questions\Services\" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="app.db" />
     </ItemGroup>
 </Project>

@@ -9,8 +9,8 @@ using YN_Network.Data;
 namespace YN_Network.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200606202157_questions and answers")]
-    partial class questionsandanswers
+    [Migration("20200611033034_CreateQuestionsAndAnswers")]
+    partial class CreateQuestionsAndAnswers
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -224,10 +224,10 @@ namespace YN_Network.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("OptionA")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("bool");
 
                     b.Property<bool>("OptionB")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("bool");
 
                     b.Property<int?>("QuestionId")
                         .HasColumnType("INTEGER");
@@ -251,19 +251,25 @@ namespace YN_Network.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTimeOffset>("CreatedAt")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("DateTime");
 
                     b.Property<DateTimeOffset>("DeletedAt")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("DateTime");
 
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("OptionA")
+                        .HasColumnType("string");
+
+                    b.Property<string>("OptionB")
+                        .HasColumnType("string");
+
                     b.Property<string>("Title")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("string");
 
                     b.Property<DateTimeOffset>("UpdatedAt")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("DateTime");
 
                     b.Property<string>("UserId")
                         .HasColumnType("TEXT");

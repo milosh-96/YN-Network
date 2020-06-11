@@ -1,46 +1,38 @@
 ﻿@model YN_Network.Areas.Questions.Models.Question
 
-@{
-    Layout = null;
-}
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-</head>
-<body>
-
-<h4>Question</h4>
-<hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="columns">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
+            <div class="input-group">
+                <span class="input-group-label">Title</span>
+                <input type="text" asp-for="Title" class="input-group-field" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="input-group">
                 <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
+                <textarea asp-for="Description"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="User" class="control-label"></label>
-                <input asp-for="User" class="form-control" />
-                <span asp-validation-for="User" class="text-danger"></span>
+            <div class="row">
+                <div class="columns small-12 medium-6">
+                    <div class="input-group">
+                        <span class="input-group-label">Option A</span>
+                        <input type="text" asp-for="OptionA" class="input-group-field" />
+                        <span asp-validation-for="OptionA" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="columns small-12 medium-6">
+                    <div class="input-group">
+                        <span class="input-group-label">Option B</span>
+                        <input type="text" asp-for="OptionB" class="input-group-field" />
+                        <span asp-validation-for="OptionB" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="CreatedAt" class="control-label"></label>
-                <input asp-for="CreatedAt" class="form-control" />
-                <span asp-validation-for="CreatedAt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="input-group">
+                <input type="submit" value="Create" class="btn" />
             </div>
         </form>
     </div>
@@ -50,5 +42,3 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-</body>
-</html>

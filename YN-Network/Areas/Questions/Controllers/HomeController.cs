@@ -56,7 +56,7 @@ namespace YN_Network.Areas.Questions.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,User,CreatedAt")] Question question)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,User,CreatedAt,OptionA,OptionB")] Question question)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace YN_Network.Areas.Questions.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,User,CreatedAt")] Question question)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,User,CreatedAt,OptionA,OptionB")] Question question)
         {
             if (id != question.Id)
             {
