@@ -46,17 +46,22 @@
             </h2>
         </div>
     </header>
-    <div class="row">
-        <div class="columns small-12">
-            <nav style="display:inline-block">
-                <a asp-area="Questions" asp-controller="Home" asp-action="Index">Questions & Answers</a>
-                <a asp-area="News" asp-controller="Home" asp-action="Index">News</a>
-                <a href="#">Games</a>
-                <a href="#">Weather</a>
-                <a href="#">Comics</a>
-                <a asp-area="Jokes" asp-controler="Home" asp-action="Index">Jokes</a>
-                <a href="#">Countries</a>
-            </nav>
+    <div id="top-menu">
+        <div class="row">
+            <div class="columns small-12">
+                <nav style="display:inline-block">
+
+
+
+                    <a class="@((string)ViewContext.RouteData.Values["area"] == "Questions" ? "active" : "" )" asp-area="Questions" asp-controller="Home" asp-action="Index">Questions & Answers</a>
+                    <a class="@((string)ViewContext.RouteData.Values["area"] == "News" ? "active" : "" )" asp-area="News" asp-controller="Home" asp-action="Index">News</a>
+                    <a class="@((string)ViewContext.RouteData.Values["area"] == "Games" ? "active" : "" )" href="#">Games</a>
+                    <a class="@((string)ViewContext.RouteData.Values["area"] == "Weather" ? "active" : "" )" href="#">Weather</a>
+                    <a class="@((string)ViewContext.RouteData.Values["area"] == "Comics" ? "active" : "" )" href="#">Comics</a>
+                    <a class="@((string)ViewContext.RouteData.Values["area"] == "Jokes" ? "active" : "" )" asp-area="Jokes" asp-controler="Home" asp-action="Index">Jokes</a>
+                    <a class="@((string)ViewContext.RouteData.Values["area"] == "Countries" ? "active" : "" )" href="#">Countries</a>
+                </nav>
+            </div>
         </div>
     </div>
     <div class="row">

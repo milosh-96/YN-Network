@@ -27,51 +27,22 @@
     <div class="row">
         <div class="columns small-12 medium-4">
             <p>
-                <a asp-area="Questions" asp-controller="Home" asp-action="Create">Create New</a>
+                <a class="button" asp-area="Questions" asp-controller="Home" asp-action="Create">Ask!</a>
             </p>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Title)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Description)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.User)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.CreatedAt)
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Title)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Description)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.User)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CreatedAt)
-                            </td>
-                            <td>
-                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+            @foreach (YN_Network.Areas.Questions.Models.Question item in Model)
+            {
+                <div class="row" style="border:1px solid #ccc">
+                    <div class="columns small-12">
+                        <p style="font-size:20px">@item.Title</p>
+                    </div>
+                    <div class="columns small-6">
+                        <button class="button" style="width:100%">@item.OptionA</button>
+                    </div>
+                    <div class="columns small-6">
+                        <button class="button" style="width:100%">@item.OptionB</button>
+                    </div>
+                </div>
+            }
         </div>
     </div>
 
