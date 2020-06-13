@@ -16,6 +16,7 @@ using YN_Network.Areas.Search.Services;
 using YN_Network.Areas.Jokes.Services;
 using YN_Network.Areas.Comics.Services;
 using YN_Network.Areas.News.Services;
+using YN_Network.Areas.Questions.Services;
 
 namespace YN_Network
 {
@@ -43,6 +44,8 @@ namespace YN_Network
             services.AddScoped<IJokesService, JokesService>();
             services.AddScoped<IComicService, ComicService>();
             services.AddScoped<INewsService, NewsService>();
+            services.AddScoped<IQuestionService, QuestionService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

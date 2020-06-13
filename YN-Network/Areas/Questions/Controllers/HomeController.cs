@@ -6,8 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using YN_Network.Areas.Questions.Models;
+using YN_Network.Areas.Questions.Services;
+using YN_Network.Areas.Questions.ViewModels;
 using YN_Network.Data;
 using YN_Network.Models;
+
+// Todo: Fix date issue when updating a record! //
 
 namespace YN_Network.Areas.Questions.Controllers
 {
@@ -15,16 +19,20 @@ namespace YN_Network.Areas.Questions.Controllers
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _context;
-
-        public HomeController(ApplicationDbContext context)
+        private readonly IQuestionService _questionService;
+        public HomeController(ApplicationDbContext context,IQuestionService questionService)
         {
             _context = context;
+            _questionService = questionService;
         }
 
         // GET: Questions/Questions
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Questions.ToListAsync());
+            QuestionsHomeViewModel viewModel = new QuestionsHomeViewModel();
+            viewModel.Questions = _questionService.GetQuestions();
+            viewModel.MostPopularQuestions = _questionService.GetMostPopularQuestions();
+            return View(viewModel);
         }
 
         // GET: Questions/Questions/Details/5
@@ -42,6 +50,8 @@ namespace YN_Network.Areas.Questions.Controllers
                 return NotFound();
             }
 
+            question.Views = question.Views + 1;
+            await _context.SaveChangesAsync();
             return View(question);
         }
 
@@ -56,11 +66,13 @@ namespace YN_Network.Areas.Questions.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,User,CreatedAt,OptionA,OptionB")] Question question)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,User,OptionA,OptionB")] Question question)
         {
             if (ModelState.IsValid)
             {
+                question.CreatedAt = DateTime.Now;
                 _context.Add(question);
+
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -88,7 +100,7 @@ namespace YN_Network.Areas.Questions.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,User,CreatedAt,OptionA,OptionB")] Question question)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,OptionA,OptionB")] Question question)
         {
             if (id != question.Id)
             {

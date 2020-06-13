@@ -24,13 +24,13 @@ namespace YN_Network.Areas.Questions.Models
         public string OptionB { get; set; }
 
         [Column(TypeName = "DateTime")]
-        public DateTimeOffset CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         [Column(TypeName = "DateTime")]
-        public DateTimeOffset UpdatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         [Column(TypeName = "DateTime")]
-        public DateTimeOffset DeletedAt { get; set; }
+        public DateTime DeletedAt { get; set; }
     }
 
     public class Answer

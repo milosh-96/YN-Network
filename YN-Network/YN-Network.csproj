@@ -24,9 +24,7 @@
         <Folder Include="Areas\Activity\Views\" />
         <Folder Include="Areas\News\Data\" />
         <Folder Include="ViewModels\" />
-        <Folder Include="Areas\Search\" />
         <Folder Include="Areas\Search\Controllers\" />
-        <Folder Include="Areas\Search\Views\" />
         <Folder Include="Areas\Search\Views\Query\" />
         <Folder Include="Areas\Search\ViewModels\" />
         <Folder Include="Areas\Search\Models\" />
@@ -50,7 +48,6 @@
         <Folder Include="Areas\Jokes\Views\Widgets\" />
         <Folder Include="Areas\Jokes\Views\Partials\" />
         <Folder Include="Areas\Questions\Models\" />
-        <Folder Include="Areas\Questions\Services\" />
     </ItemGroup>
     <ItemGroup>
       <None Remove="app.db" />

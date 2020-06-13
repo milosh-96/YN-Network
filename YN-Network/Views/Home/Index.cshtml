@@ -1,8 +1,11 @@
 ﻿@model YN_Network.ViewModels.HomeViewModel
 
     <div id="home-page" class="row">
+
         <div class="columns small-12 medium-3" id="home-comic">
             @{
+                Html.RenderPartial("../../Areas/Search/Views/Widgets/_QuerySearchWidget");
+
                 Html.RenderPartial("../../Areas/Comics/Views/Widgets/_HomePageComicWidget", Model.Comic);
                 Html.RenderPartial("../../Areas/Jokes/Views/Widgets/_HomePageJokeWidget", Model.Joke);
 

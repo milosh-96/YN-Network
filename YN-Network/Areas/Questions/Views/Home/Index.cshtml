@@ -1,13 +1,5 @@
-﻿@model IEnumerable<YN_Network.Areas.Questions.Models.Question>
+﻿@model YN_Network.Areas.Questions.ViewModels.QuestionsHomeViewModel
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
     <div class="row">
         <div class="columns">
             An original YN Network feature. Coming Soon!
@@ -22,6 +14,13 @@
         </div>
         <div class="columns small-12 medium-4">
             <h3>Most Popular</h3>
+            <ul class="list">
+                @foreach (YN_Network.Areas.Questions.Models.Question item in Model.MostPopularQuestions)
+                {
+                    <li>@item.Title</li>
+                    }
+                </ul>
+          
         </div>
     </div>
     <div class="row">
@@ -29,22 +28,31 @@
             <p>
                 <a class="button" asp-area="Questions" asp-controller="Home" asp-action="Create">Ask!</a>
             </p>
-            @foreach (YN_Network.Areas.Questions.Models.Question item in Model)
+            @foreach (YN_Network.Areas.Questions.Models.Question item in Model.Questions)
             {
                 <div class="row" style="border:1px solid #ccc">
                     <div class="columns small-12">
-                        <p style="font-size:20px">@item.Title</p>
+                        <a
+                           asp-area="Questions"
+                           asp-controller="Home"
+                           asp-action="Details"
+                           asp-route-id="@item.Id"
+                           style="font-size:20px">@item.Title</a>
+                        <span class="datetime">@item.CreatedAt.ToString("D")</span>
+                        <p>
+                            @item.Description
+                        </p>
                     </div>
-                    <div class="columns small-6">
-                        <button class="button" style="width:100%">@item.OptionA</button>
-                    </div>
-                    <div class="columns small-6">
-                        <button class="button" style="width:100%">@item.OptionB</button>
+                    <div class="answers-preview" title="Visit Question details to answer.">
+                        <div class="columns small-6" style="cursor:not-allowed;">
+                            <button class="button" disabled="disabled" style="width:100%">@item.OptionA</button>
+                        </div>
+                        <div class="columns small-6">
+                            <button class="button" disabled="disabled" style="width:100%">@item.OptionB</button>
+                        </div>
+
                     </div>
                 </div>
             }
         </div>
     </div>
-
-</body>
-</html>

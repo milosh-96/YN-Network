@@ -76,3 +76,11 @@ header {
         #top-menu a:hover {
             border-bottom: 4px solid purple;
         }
+
+
+        #yn-index form {margin:0;padding:0;}
+
+.datetime {
+    color: grey;
+    font-style: italic
+}

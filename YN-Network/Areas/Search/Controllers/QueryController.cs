@@ -27,7 +27,7 @@ namespace YN_Network.Areas.Search.Controllers
             ResultViewModel resultViewModel = new ResultViewModel();
             resultViewModel.Query = Request.Query["query"];
             resultViewModel.RelatedTopics = _queryService.GetRelatedTopics(resultViewModel.Query);
-
+            ViewData["Query"] = Request.Query["query"];
             return View(resultViewModel);
         }
     }
