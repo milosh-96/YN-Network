@@ -11,7 +11,13 @@ namespace YN_Network.Areas.News.Services
         // us news will be served
         public ICollection<YN_Network.Areas.News.Models.Article> GetTopHeadlines();
 
+        // limit number of items in the list
+        public ICollection<YN_Network.Areas.News.Models.Article> GetTopHeadlines(int limit);
+
+
         // if source is passed we will change the source country
         public ICollection<YN_Network.Areas.News.Models.Article> GetTopHeadlines(string country);
+
+
     }
 }

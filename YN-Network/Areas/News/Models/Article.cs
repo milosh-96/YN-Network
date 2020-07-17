@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.RegularExpressions;
 
 namespace YN_Network.Areas.News.Models
@@ -27,7 +29,19 @@ namespace YN_Network.Areas.News.Models
 
     public class Source
     {
-        public string Id { get; set; }
+        [Key]
+        public int Id { get; set; }
+        
+        [Column(TypeName ="string") ]
         public string Name { get; set; }
+
+        [Column(TypeName = "string")]
+        public string RssFeedUrl { get; set; }
+
+        [Column(TypeName="string")]
+        public string CountryCode { get; set; }
+
+        [Column(TypeName = "string")]
+        public string SourceLogoUrl { get; set; }
     }
 }

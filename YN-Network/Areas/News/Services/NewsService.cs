@@ -19,6 +19,12 @@ namespace YN_Network.Areas.News.Services
         {
             _webClient.Encoding = Encoding.UTF8;
         }
+
+        public ICollection<Source> GetSources()
+        {
+            throw new NotImplementedException();
+        }
+
         public ICollection<Article> GetTopHeadlines()
         {
             string endpointUrl = String.Format(_apiUrl, "top-headlines?country=us");
@@ -47,7 +53,9 @@ namespace YN_Network.Areas.News.Services
 
         }
 
-
-
+        public ICollection<Article> GetTopHeadlines(int limit)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

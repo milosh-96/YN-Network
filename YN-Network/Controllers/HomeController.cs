@@ -36,7 +36,7 @@ namespace YN_Network.Controllers
         {
             HomeViewModel viewModel = new HomeViewModel();
             viewModel.Comic = _comicService.GetTodayComic();
-            viewModel.Articles = _newsService.GetTopHeadlines();
+            viewModel.Articles = _newsService.GetTopHeadlines(10);
             viewModel.Joke = _jokesService.GetRandomJoke();
             return View(viewModel);
         }

@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YN_Network.Data;
 
 namespace YN_Network.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200717185014_NewsSourcesTable")]
+    partial class NewsSourcesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -218,16 +220,10 @@ namespace YN_Network.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("CountryCode")
-                        .HasColumnType("string");
-
                     b.Property<string>("Name")
                         .HasColumnType("string");
 
                     b.Property<string>("RssFeedUrl")
-                        .HasColumnType("string");
-
-                    b.Property<string>("SourceLogoUrl")
                         .HasColumnType("string");
 
                     b.HasKey("Id");

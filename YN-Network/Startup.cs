@@ -43,7 +43,7 @@ namespace YN_Network
             services.AddScoped<IQueryService, QueryService>();
             services.AddScoped<IJokesService, JokesService>();
             services.AddScoped<IComicService, ComicService>();
-            services.AddScoped<INewsService, NewsService>();
+            services.AddScoped<INewsService, RssNewsService>();
             services.AddScoped<IQuestionService, QuestionService>();
 
         }

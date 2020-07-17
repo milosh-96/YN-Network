@@ -16,5 +16,7 @@ namespace YN_Network.Data
 
         public DbSet<Areas.Questions.Models.Question> Questions { get; set; }
         public DbSet<Areas.Questions.Models.Answer> Answers { get; set; }
+
+        public DbSet<Areas.News.Models.Source> NewsSources { get; set; }
     }
 }
