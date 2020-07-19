@@ -1,9 +1,12 @@
 ﻿@model YN_Network.Areas.News.Models.Article
 <div class="news-item callout">
-    <h3>@Model.Title</h3>
+    <h3><a href="@Model.Url" target="_blank">@Model.Title</a></h3>
     <em>@Model.PublishedAt.ToString()</em>
     <div>
-        <img src="@Model.UrlToImage" width="100%" style="max-width:600px" alt="@Model.Title" />
+        @if (Model.UrlToImage != null)
+        {
+            <img src="@Model.UrlToImage" width="100%" style="max-width:600px" alt="@Model.Title" onerror="this.style.display='none'" />
+        }
     </div>
 
     <div>

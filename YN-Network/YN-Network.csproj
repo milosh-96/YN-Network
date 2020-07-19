@@ -49,6 +49,7 @@
         <Folder Include="Areas\Jokes\Views\Widgets\" />
         <Folder Include="Areas\Jokes\Views\Partials\" />
         <Folder Include="Areas\Questions\Models\" />
+        <Folder Include="Views\Shared\Ads\" />
     </ItemGroup>
     <ItemGroup>
       <None Remove="app.db" />

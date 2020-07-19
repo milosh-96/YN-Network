@@ -60,25 +60,27 @@ namespace YN_Network.Areas.News.Services
 
             List<Article> articles = new List<Article>();
 
-            if(feed != null)
+            if (feed != null)
             {
                 RssParser parser = new RssParser();
                 List<RssSchema> rss = parser.Parse(feed).ToList();
 
-                foreach(RssSchema element in rss)
+                foreach (RssSchema element in rss)
                 {
-                    Article article = new Article() {
+                    Article article = new Article()
+                    {
                         Author = element.Author,
                         Title = element.Title,
                         Description = element.Summary,
                         Content = element.Content,
-                        PublishedAt=element.PublishDate,
-                        Source=source,
-                        UrlToImage = element.ImageUrl
+                        PublishedAt = element.PublishDate,
+                        Source = source,
+                        UrlToImage = element.ImageUrl,
+                        Url = element.FeedUrl
                     };
                     articles.Add(article);
                 }
-               
+
             }
             return articles;
         }

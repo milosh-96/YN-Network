@@ -31,14 +31,14 @@ namespace YN_Network.Areas.News.Models
     {
         [Key]
         public int Id { get; set; }
-        
-        [Column(TypeName ="string") ]
+
+        [Column(TypeName = "string")]
         public string Name { get; set; }
 
         [Column(TypeName = "string")]
         public string RssFeedUrl { get; set; }
 
-        [Column(TypeName="string")]
+        [Column(TypeName = "string")]
         public string CountryCode { get; set; }
 
         [Column(TypeName = "string")]

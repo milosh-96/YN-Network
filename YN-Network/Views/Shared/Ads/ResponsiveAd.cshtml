@@ -1,0 +1,16 @@
+﻿@{
+    List<string> sources = new List<string>()
+{
+        "https://www.cutthecord.com/wp-content/uploads/2017/11/hulu-300x250-ad.jpg",
+        "https://blog.adbeat.com/wp-content/uploads/2015/03/verizonwireless.com-e656ed18372bb7684b85543dd46076491.jpg",
+        "https://i.pinimg.com/originals/e0/7a/fe/e07afe966f57e40621aca3373cf8811f.jpg"
+    };
+
+    int r = (new Random()).Next(sources.Count);
+
+}
+
+<div id="ad">
+    <img width="100%"
+         src="@sources[r]" />
+</div>
