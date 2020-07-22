@@ -20,7 +20,7 @@
         <form asp-area="News" asp-controller="Home" asp-action="Index" method="get">
             <div class="input-group">
                 <div class="input-group-label">
-                    Country
+                    Language
                 </div>
                 <select name="country" class="input-group-field">
                    @foreach(string country in Model.SourcesCountries)
@@ -28,7 +28,6 @@
                        <option value="@country">@{
                            var cultureInfo = new CultureInfo(country);
                            var regionInfo = new RegionInfo(cultureInfo.Name);
-
                            @regionInfo.EnglishName;
 
                        }</option>
