@@ -41,8 +41,8 @@
                     <a asp-area="" asp-controller="Home" asp-action="Index">
                         <img src="/images/image.png" width="150px" asp-append-version="true" />
                         @((ViewContext.RouteData.Values["area"] != null) ?
-                      ViewContext.RouteData.Values["area"] :
-                    "Network")
+  ViewContext.RouteData.Values["area"] :
+"Network")
 
                     </a>
                 </h2>
@@ -54,13 +54,19 @@
         <div class="row">
             <div class="columns small-12">
                 <nav style="display:inline-block">
-                    <a class="@((string)ViewContext.RouteData.Values["area"] == "Questions" ? "active" : "" )" asp-area="Questions" asp-controller="Home" asp-action="Index">Questions & Answers</a>
-                    <a class="@((string)ViewContext.RouteData.Values["area"] == "News" ? "active" : "" )" asp-area="News" asp-controller="Home" asp-action="Index">News</a>
-                    <a class="@((string)ViewContext.RouteData.Values["area"] == "Games" ? "active" : "" )" href="#">Games</a>
-                    <a class="@((string)ViewContext.RouteData.Values["area"] == "Weather" ? "active" : "" )" href="#">Weather</a>
-                    <a class="@((string)ViewContext.RouteData.Values["area"] == "Comics" ? "active" : "" )" href="#">Comics</a>
-                    <a class="@((string)ViewContext.RouteData.Values["area"] == "Jokes" ? "active" : "" )" asp-area="Jokes" asp-controler="Home" asp-action="Index">Jokes</a>
-                    <a class="@((string)ViewContext.RouteData.Values["area"] == "Countries" ? "active" : "" )" href="#">Countries</a>
+                    <a class="menu-item @(
+        (string)ViewContext.RouteData.Values["Area"] == null &&
+        (string)ViewContext.RouteData.Values["Controller"] == "Home" &&
+        (string)ViewContext.RouteData.Values["Action"] == "Index"
+  ? "active"
+  : "" )" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    <a class="menu-item @((string)ViewContext.RouteData.Values["area"] == "Questions" ? "active" : "" )" asp-area="Questions" asp-controller="Home" asp-action="Index">Questions & Answers</a>
+                    <a class="menu-item @((string)ViewContext.RouteData.Values["area"] == "News" ? "active" : "" )" asp-area="News" asp-controller="Home" asp-action="Index">News</a>
+                    <a class="menu-item @((string)ViewContext.RouteData.Values["area"] == "Games" ? "active" : "" )" href="#">Games</a>
+                    <a class="menu-item @((string)ViewContext.RouteData.Values["area"] == "Weather" ? "active" : "" )" href="#">Weather</a>
+                    <a class="menu-item @((string)ViewContext.RouteData.Values["area"] == "Comics" ? "active" : "" )" href="#">Comics</a>
+                    <a class="menu-item @((string)ViewContext.RouteData.Values["area"] == "Jokes" ? "active" : "" )" asp-area="Jokes" asp-controler="Home" asp-action="Index">Jokes</a>
+                    <a class="menu-item @((string)ViewContext.RouteData.Values["area"] == "Countries" ? "active" : "" )" href="#">Countries</a>
                 </nav>
             </div>
 
