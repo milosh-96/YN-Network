@@ -2,39 +2,29 @@
 
 <div class="row">
     <div class="columns small-12 medium-8 medium-offset-2">
-        <h4>
-            <i class="far fa-question-circle"></i> <strong>@Html.DisplayFor(model => model.Title)</strong>
-        </h4>
-
         <hr />
-        <dl>
-            <dt class="col-sm-2">
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Title)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Description)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Description)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.User)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.User)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.CreatedAt)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.CreatedAt)
-            </dd>
-        </dl>
-        <div>
-            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-            <a asp-action="Index">Back to List</a>
+        <h2>
+            <i class="far fa-question-circle"></i> <strong>@Html.DisplayFor(model => model.Title)</strong>
+        </h2>
+        <div class="question-body">
+            <em>@Html.DisplayFor(model => model.Description)</em>
+            <div id="voting-buttons" style="padding-top:10px;">
+                <button class="button button-lg vote-option-a">75%</button>
+                <button class="button button-lg vote-option-b">25%</button>
+            </div>
+        </div>
+        <div class="question-discussion">
+            <h3>Discuss</h3>
+        </div>
+        <div class="question-actions">
+
+            @if (User.Identity.IsAuthenticated == true)
+            {
+                <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+
+            }
+            <a href="?results=show">View Results</a>
+            | <a asp-action="Index">Back to Questions Index</a>
         </div>
     </div>
 </div>

@@ -30,27 +30,27 @@
 
                     @foreach (YN_Network.Areas.Questions.Models.Question item in Model.Questions)
                     {
-                        <div class="columns small-12">
-                            <a asp-area="Questions"
-                               asp-controller="Home"
-                               asp-action="Details"
-                               asp-route-id="@item.Id"
-                               style="font-size:20px">@item.Title</a>
-                            <span class="datetime">@item.CreatedAt.ToString("D")</span>
-                            <p>
-                                @item.Description
-                            </p>
-                            <div class="answers-preview" title="Visit Question details to answer.">
-                                <div class="columns small-6" style="cursor:not-allowed;">
-                                    <button class="button" disabled="disabled" style="width:100%">@item.OptionA</button>
-                                </div>
-                                <div class="columns small-6">
-                                    <button class="button" disabled="disabled" style="width:100%">@item.OptionB</button>
-                                </div>
+        <div class="columns small-12">
+            <a asp-area="Questions"
+               asp-controller="Home"
+               asp-action="Details"
+               asp-route-slug="@item.Slug"
+               asp-route-id="@item.Id"
+               style="font-size:20px">@item.Title</a>
+            <span class="datetime">@item.CreatedAt.ToString("D")</span>
+            <p>
+                @item.Description <strong>Views: @item.Views</strong>
+            </p>
+            <div class="answers-preview" title="Visit Question details to answer.">
+                <div class="columns small-6" style="cursor:not-allowed;">
+                    <button class="button" disabled="disabled" style="width:100%">@item.OptionA</button>
+                </div>
+                <div class="columns small-6">
+                    <button class="button" disabled="disabled" style="width:100%">@item.OptionB</button>
+                </div>
 
-                            </div>
-                        </div>
-                    }
+            </div>
+        </div>}
                 </div>
             </div>
         </div>
@@ -62,12 +62,12 @@
             <ul class="list">
                 @foreach (YN_Network.Areas.Questions.Models.Question item in Model.MostPopularQuestions)
                 {
-                    <li>@item.Title</li>
-                }
+    <li>@item.Title</li>
+}
                 @foreach (YN_Network.Areas.Questions.Models.Question item in Model.MostPopularQuestions)
                 {
-                    <li>@item.Title</li>
-                }
+    <li>@item.Title</li>
+}
             </ul>
 
         </div>

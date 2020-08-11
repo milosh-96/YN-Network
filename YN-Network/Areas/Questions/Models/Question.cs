@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
+using Slugify;
 
 namespace YN_Network.Areas.Questions.Models
 {
@@ -31,6 +32,17 @@ namespace YN_Network.Areas.Questions.Models
 
         [Column(TypeName = "DateTime")]
         public DateTime DeletedAt { get; set; }
+
+
+        [NotMapped]
+        private string slug = "";
+
+        [NotMapped]
+        public string Slug
+        {
+            get { return (new SlugHelper()).GenerateSlug(this.Title).ToString(); }
+            set { slug = value; }
+        }
     }
 
     public class Answer
