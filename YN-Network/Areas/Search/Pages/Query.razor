@@ -1,0 +1,34 @@
+﻿@using YN_Network.Areas.Search.ViewModels
+
+<div class="row">
+    <div class="columns small-12">
+        <h2>Search results for @ViewModel.Query</h2>
+
+
+        <div>
+            @foreach (YN_Network.Areas.Search.Models.Topic topic in ViewModel.RelatedTopics)
+            {
+                @if (topic.Text != null)
+                {
+                    <div class="callout">
+                        <div class="row">
+                            <div class="columns small-12 medium-4">
+                                <img src="@topic.Icon.URL" width="100%" />
+                            </div>
+                            <div class="columns small-12 medium-8">
+                                <strong>@topic.Text</strong>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+
+    </div>
+</div>
+
+
+@code {
+    public ResultViewModel ViewModel { get; set; }
+}

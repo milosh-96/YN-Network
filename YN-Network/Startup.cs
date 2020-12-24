@@ -38,7 +38,8 @@ namespace YN_Network
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
-            services.AddRazorPages();
+            services.AddServerSideBlazor();
+            services.AddRazorPages().AddRazorRuntimeCompilation();
 
             services.AddScoped<IQueryService, QueryService>();
             services.AddScoped<IJokesService, JokesService>();
@@ -93,6 +94,7 @@ namespace YN_Network
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+                endpoints.MapBlazorHub();
             });
         }
     }

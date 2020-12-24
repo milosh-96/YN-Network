@@ -26,9 +26,6 @@
         <Folder Include="Areas\Activity\Views\" />
         <Folder Include="Areas\News\Data\" />
         <Folder Include="ViewModels\" />
-        <Folder Include="Areas\Search\Controllers\" />
-        <Folder Include="Areas\Search\Views\Query\" />
-        <Folder Include="Areas\Search\ViewModels\" />
         <Folder Include="Areas\Search\Models\" />
         <Folder Include="Areas\Search\Services\" />
         <Folder Include="Areas\Jokes\" />
@@ -54,5 +51,11 @@
     </ItemGroup>
     <ItemGroup>
       <None Remove="app.db" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Update="Areas\Search\Pages\_ViewStart.cshtml">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
     </ItemGroup>
 </Project>
