@@ -1,0 +1,16 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using YN_Network.Areas.Search.ViewComponents
+@model YN_Network.Areas.Search.Pages.QueryModel
+@{
+}
+<div class="row">
+    <div class="columns small-12">
+        <h3>Search for: @Model.ViewModel.Query</h3>
+        <component type="typeof(YN_Network.Areas.Search.ViewComponents.DefinitionsList)" render-mode="ServerPrerendered" param-Topics="@Model.ViewModel.RelatedTopics" />
+    </div>
+    <hr />
+
+    <component type="typeof(YN_Network.Areas.Search.ViewComponents.SearchModule)" render-mode="ServerPrerendered" param-Query="@Model.ViewModel.Query" />
+
+</div>

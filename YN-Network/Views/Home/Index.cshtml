@@ -4,22 +4,22 @@
 
     <div class="columns small-12 medium-3" id="home-comic">
         @{
-            Html.RenderPartial("../../Areas/Search/Views/Widgets/_QuerySearchWidget");
+           await Html.RenderPartialAsync("../../Areas/Search/Views/Widgets/_QuerySearchWidget");
 
-            Html.RenderPartial("../../Areas/Comics/Views/Widgets/_HomePageComicWidget", Model.Comic);
-            Html.RenderPartial("../../Areas/Jokes/Views/Widgets/_HomePageJokeWidget", Model.Joke);
+           await Html.RenderPartialAsync("../../Areas/Comics/Views/Widgets/_HomePageComicWidget", Model.Comic);
+           await Html.RenderPartialAsync("../../Areas/Jokes/Views/Widgets/_HomePageJokeWidget", Model.Joke);
 
         }
 
     </div>
     <div class="columns small-12 medium-6" id="home-news">
         @{
-            Html.RenderPartial("../../Areas/News/Views/Widgets/_HomePageNewsWidget", Model.Articles);
+           await Html.RenderPartialAsync("../../Areas/News/Views/Widgets/_HomePageNewsWidget", Model.Articles);
         }
     </div>
     <div class="columns small-12 medium-3">
         @{
-            Html.RenderPartial("../../Views/Shared/Ads/ResponsiveAd");
+           await Html.RenderPartialAsync("../../Views/Shared/Ads/ResponsiveAd");
         }
     </div>
 </div>

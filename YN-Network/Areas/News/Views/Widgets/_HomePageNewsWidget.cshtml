@@ -4,7 +4,9 @@
 @foreach (YN_Network.Areas.News.Models.Article article in Model)
 {
     <div>
-        @{Html.RenderPartial("../../Areas/News/Views/Partials/_ArticleItem", article);
+        @{
+            await Html.RenderPartialAsync("../../Areas/News/Views/Partials/_ArticleItem", article);
         }
+
     </div>
 }

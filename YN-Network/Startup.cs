@@ -37,6 +37,7 @@ namespace YN_Network
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddHttpClient();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddServerSideBlazor();
             services.AddRazorPages().AddRazorRuntimeCompilation();

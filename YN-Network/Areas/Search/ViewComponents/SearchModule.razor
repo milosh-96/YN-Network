@@ -1,0 +1,12 @@
+﻿<form method="get" style="display:inline-block" action="/Search/Query">
+    <div class="input-group">
+        <input name="query" type="text" class="input-group-field" placeholder="Enter your query here..." @bind="@Query">
+        <div class="input-group-button">
+            <input type="submit" class="button" value="Search!" />
+        </div>
+    </div>
+</form>
+@code {
+    [Parameter]
+    public string Query { get; set; }
+}

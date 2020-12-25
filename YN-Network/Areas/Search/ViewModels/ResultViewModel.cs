@@ -9,8 +9,6 @@ namespace YN_Network.Areas.Search.ViewModels
     {
         public ICollection<Topic> RelatedTopics = new Collection<Topic>();
         public string Query = "Default";
-        public ResultViewModel()
-        {
-        }
+     
     }
 }

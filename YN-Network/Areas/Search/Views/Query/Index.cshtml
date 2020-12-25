@@ -3,7 +3,7 @@
     <div class="columns small-12">
         <h2>Search results for @Model.Query</h2>
 
-        @{Html.RenderPartial("../Widgets/_QuerySearchWidget"); }
+        @{await Html.RenderPartialAsync("../Widgets/_QuerySearchWidget"); }
 
         <div>
             @foreach (YN_Network.Areas.Search.Models.Topic topic in Model.RelatedTopics)

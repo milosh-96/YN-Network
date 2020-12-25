@@ -11,24 +11,24 @@ using YN_Network.Areas.Search.ViewModels;
 
 namespace YN_Network.Areas.Search.Pages
 {
-    public class IndexModel : PageModel
+    public class QueryModel : PageModel
     {
         private IQueryService _queryService;
+        public ResultViewModel ViewModel;
 
-        public IndexModel(IQueryService queryService)
+        public QueryModel(IQueryService queryService)
         {
             _queryService = queryService;
         }
-        public ResultViewModel ViewModel { get; set; }
 
 
-        public void OnGet(string query)
+        public async Task OnGet(string query)
         {
             ViewModel = new ResultViewModel();
             if (query != "")
             {
                 ViewModel.Query = query;
-                ViewModel.RelatedTopics = _queryService.GetRelatedTopics(query);
+                ViewModel.RelatedTopics = await _queryService.GetRelatedTopics(query);
             }
         }
     }

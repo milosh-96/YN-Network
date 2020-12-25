@@ -1,12 +1,7 @@
-﻿@using YN_Network.Areas.Search.ViewModels
-
-<div class="row">
-    <div class="columns small-12">
-        <h2>Search results for @ViewModel.Query</h2>
-
+﻿@using YN_Network.Areas.Search.Models
 
         <div>
-            @foreach (YN_Network.Areas.Search.Models.Topic topic in ViewModel.RelatedTopics)
+            @foreach (YN_Network.Areas.Search.Models.Topic topic in Topics)
             {
                 @if (topic.Text != null)
                 {
@@ -25,10 +20,9 @@
             }
         </div>
 
-    </div>
-</div>
 
 
 @code {
-    public ResultViewModel ViewModel { get; set; }
+    [Parameter]
+    public ICollection<Topic> Topics { get; set; }
 }

@@ -55,6 +55,7 @@ namespace YN_Network.Areas.News.Services
                 }
                 catch (Exception e)
                 {
+                    Console.WriteLine(e.Message);
                 }
             }
 

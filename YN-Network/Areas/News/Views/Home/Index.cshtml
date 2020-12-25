@@ -12,7 +12,7 @@
         @foreach (YN_Network.Areas.News.Models.Article article in Model.Articles)
         {
 
-            Html.RenderPartial("../Partials/_ArticleItem", article);
+            await Html.RenderPartialAsync("../Partials/_ArticleItem", article);
         }
         <!---Powered by: <a href="#">News API</a>-->
     </div>
@@ -42,7 +42,7 @@
         <div>
             
             @{
-                Html.RenderPartial("../../Areas/Comics/Views/Widgets/_HomePageComicWidget", Model.Comic);
+                await Html.RenderPartialAsync("../../Areas/Comics/Views/Widgets/_HomePageComicWidget", Model.Comic);
             }
         </div>
 

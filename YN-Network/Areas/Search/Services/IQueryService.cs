@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using YN_Network.Areas.Search.Models;
 
 namespace YN_Network.Areas.Search.Services
@@ -7,8 +8,8 @@ namespace YN_Network.Areas.Search.Services
     public interface IQueryService
     {
 
-        public ICollection<Topic> GetTopics(string query);
-        public ICollection<Topic> GetRelatedTopics(string query);
+        public Task<ICollection<Topic>> GetTopics(string query);
+        public Task<ICollection<Topic>> GetRelatedTopics(string query);
 
     }
 }
