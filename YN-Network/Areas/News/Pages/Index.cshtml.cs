@@ -1,25 +1,26 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using YN_Network.Areas.Comics.Services;
 using YN_Network.Areas.Jokes.Services;
-using YN_Network.Areas.News.Models;
 using YN_Network.Areas.News.Services;
+using YN_Network.Areas.News.ViewModels;
 using YN_Network.Data;
 
-namespace YN_Network.Areas.News.Controllers
+namespace YN_Network.Areas.News.Pages
 {
-    [Area("News")]
-
-    public class HomeController : Controller
+    public class IndexModel : PageModel
     {
         private readonly ApplicationDbContext _context;
         private readonly INewsService _newsService;
         private readonly IJokesService _jokesService;
         private readonly IComicService _comicService;
-        public HomeController(ApplicationDbContext context,INewsService newsService,IJokesService jokesService,IComicService comicService)
+        public HomeViewModel ViewModel { get; set; }
+
+        public IndexModel(ApplicationDbContext context, INewsService newsService, IJokesService jokesService, IComicService comicService)
         {
             _context = context;
             _newsService = newsService;
@@ -27,23 +28,23 @@ namespace YN_Network.Areas.News.Controllers
             _comicService = comicService;
         }
 
-        public IActionResult Index()
+        public void OnGet()
         {
-            ViewModels.HomeViewModel viewModel = new ViewModels.HomeViewModel();
-            viewModel.Joke = _jokesService.GetJokes();
-            viewModel.Comic = _comicService.GetTodayComic();
-            viewModel.SourcesCountries = _context.NewsSources.Select(x => x.CountryCode).Distinct().ToList();
+            ViewModel = new ViewModels.HomeViewModel();
+            ViewModel.Joke = _jokesService.GetJokes();
+            ViewModel.Comic = _comicService.GetTodayComic();
+            ViewModel.SourcesCountries = _context.NewsSources.Select(x => x.CountryCode).Distinct().ToList();
             string country = Request.Query["country"];
             if (country != null)
             {
-                viewModel.Articles = _newsService.GetTopHeadlines(country);
+                ViewModel.Articles = _newsService.GetTopHeadlines(country);
             }
             else
             {
-                viewModel.Articles = _newsService.GetTopHeadlines(10);
+                ViewModel.Articles = _newsService.GetTopHeadlines(10);
             }
-            
-            return View(viewModel);
         }
+
+
     }
 }

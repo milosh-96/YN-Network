@@ -1,0 +1,53 @@
+﻿@page
+@model YN_Network.Areas.News.Pages.IndexModel
+@using System.Globalization
+<div class="row">
+    <div class="columns small-12 medium-8">
+        <h2>Latest News</h2>
+    </div>
+
+</div>
+<div class="row">
+    <div class="columns small-12 medium-8">
+
+        @foreach (YN_Network.Areas.News.Models.Article article in Model.ViewModel.Articles)
+        {
+
+            <component type="typeof(YN_Network.Areas.News.ViewComponents.ArticleItem)"
+                       render-mode="ServerPrerendered"
+                       param-Article="@article" />
+        }
+        <!---Powered by: <a href="#">News API</a>-->
+    </div>
+    <div class="columns small-12 medium-4">
+        <form asp-area="News" asp-controller="Home" asp-action="Index" method="get">
+            <div class="input-group">
+                <div class="input-group-label">
+                    Language
+                </div>
+                <select name="country" class="input-group-field">
+                    @foreach (string country in Model.ViewModel.SourcesCountries)
+                    {
+                        <option value="@country">
+                            @{
+                                var cultureInfo = new CultureInfo(country);
+                                var regionInfo = new RegionInfo(cultureInfo.Name);
+                                @regionInfo.EnglishName;
+
+                        }
+                    </option>
+                }
+                </select>
+                <div class="input-group-button">
+                    <input type="submit" class="input-group-submit" />
+
+                </div>
+            </div>
+        </form>
+        <div>
+
+           
+        </div>
+
+    </div>
+</div>

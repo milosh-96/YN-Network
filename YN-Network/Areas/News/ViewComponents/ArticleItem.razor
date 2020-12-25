@@ -1,0 +1,25 @@
+﻿<div class="news-item callout">
+    <h3><a href="@Article.Url" target="_blank">@Article.Title</a></h3>
+    <em>@Article.PublishedAt.ToString()</em>
+    <div>
+        @if (Article.UrlToImage != null)
+        {
+            <img src="@Article.UrlToImage" width="100%" style="max-width:600px" alt="@Article.Title" onerror="this.style.display='none'" />
+        }
+    </div>
+
+    <div>
+        <p>
+            @Article.Description
+        </p>
+    </div>
+
+    <div>
+        <img src="@Article.Source.SourceLogoUrl" asp-append-version="true" width="32" />  @Article.Source.Name - @Article.Author
+    </div>
+    <hr />
+</div>
+@code {
+    [Parameter]
+    public YN_Network.Areas.News.Models.Article Article { get; set; }
+}

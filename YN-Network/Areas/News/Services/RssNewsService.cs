@@ -14,10 +14,11 @@ namespace YN_Network.Areas.News.Services
     public class RssNewsService : INewsService
     {
         private readonly ApplicationDbContext _context;
-
-        public RssNewsService(ApplicationDbContext context)
+        private IHttpClientFactory _httpClientFactory;
+        public RssNewsService(ApplicationDbContext context,IHttpClientFactory httpClientFactory)
         {
             _context = context;
+            _httpClientFactory = httpClientFactory;
         }
         public ICollection<Article> GetTopHeadlines()
         {
@@ -47,11 +48,14 @@ namespace YN_Network.Areas.News.Services
         public async Task<List<Article>> ParseRss(Source source)
         {
             string feed = null;
-            using (var client = new HttpClient())
-            {
+            HttpClient httpClient = _httpClientFactory.CreateClient();
+            HttpResponseMessage response = await httpClient.GetAsync(source.RssFeedUrl);
+
+            if(response.IsSuccessStatusCode) {
+                using var responseStream = response.Content.ReadAsStringAsync();
                 try
                 {
-                    feed = await client.GetStringAsync(source.RssFeedUrl);
+                    feed = responseStream.Result;
                 }
                 catch (Exception e)
                 {
