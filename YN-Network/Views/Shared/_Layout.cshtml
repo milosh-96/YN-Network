@@ -1,6 +1,4 @@
-﻿@{ YN_Network.Models.Fact fact = YN_Network.Services.GlobalService.GetRandomFact();
-                YN_Network.Models.MyIpAddress myIp = YN_Network.Services.GlobalService.GetMyIpAddress(); }
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,17 +17,7 @@
 </head>
 <body>
     <div id="topbar">
-        <div class="row">
-            <div class="columns small-12 medium-2">
-                <strong>My IP:</strong> @myIp.Ip
-            </div>
-            <div class="columns small-12 medium-10" id="fact">
-                <span style="color:dodgerblue">i</span>
-                <strong>Random Fact:</strong>
-                @fact.Text (@fact.Source)
-            </div>
-
-        </div>
+       
     </div>
     <header>
         <div class="row">

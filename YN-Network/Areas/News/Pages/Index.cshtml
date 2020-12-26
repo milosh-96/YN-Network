@@ -9,15 +9,10 @@
 </div>
 <div class="row">
     <div class="columns small-12 medium-8">
-
-        @foreach (YN_Network.Areas.News.Models.Article article in Model.ViewModel.Articles)
-        {
-
-            <component type="typeof(YN_Network.Areas.News.ViewComponents.ArticleItem)"
+    
+            <component type="typeof(YN_Network.Areas.News.ViewComponents.ArticlesList)"
                        render-mode="ServerPrerendered"
-                       param-Article="@article" />
-        }
-        <!---Powered by: <a href="#">News API</a>-->
+                        />
     </div>
     <div class="columns small-12 medium-4">
         <form asp-area="News" asp-controller="Home" asp-action="Index" method="get">

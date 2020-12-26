@@ -31,8 +31,8 @@ namespace YN_Network.Areas.News.Pages
         public void OnGet()
         {
             ViewModel = new ViewModels.HomeViewModel();
-            ViewModel.Joke = _jokesService.GetJokes();
-            ViewModel.Comic = _comicService.GetTodayComic();
+            ViewModel.Joke = _jokesService.GetJokes().Result;
+            ViewModel.Comic = _comicService.GetTodayComic().Result;
             ViewModel.SourcesCountries = _context.NewsSources.Select(x => x.CountryCode).Distinct().ToList();
             string country = Request.Query["country"];
             if (country != null)

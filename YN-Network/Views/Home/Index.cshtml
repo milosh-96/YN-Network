@@ -13,9 +13,7 @@
 
     </div>
     <div class="columns small-12 medium-6" id="home-news">
-        @{
-           await Html.RenderPartialAsync("../../Areas/News/Views/Widgets/_HomePageNewsWidget", Model.Articles);
-        }
+        <component type="typeof(YN_Network.Areas.News.ViewComponents.ArticlesList)" render-mode="ServerPrerendered" />
     </div>
     <div class="columns small-12 medium-3">
         @{

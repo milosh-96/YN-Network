@@ -35,9 +35,8 @@ namespace YN_Network.Controllers
         public IActionResult Index()
         {
             HomeViewModel viewModel = new HomeViewModel();
-            viewModel.Comic = _comicService.GetTodayComic();
-            viewModel.Articles = _newsService.GetTopHeadlines(10);
-            viewModel.Joke = _jokesService.GetRandomJoke();
+            viewModel.Comic = _comicService.GetTodayComic().Result;
+            viewModel.Joke = _jokesService.GetRandomJoke().Result;
             return View(viewModel);
         }
 

@@ -2,33 +2,96 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net;
+using System.Net.Http;
 using System.Text.Json;
+using System.Threading.Tasks;
 using YN_Network.Areas.Jokes.Models;
 
 namespace YN_Network.Areas.Jokes.Services
 {
     public class JokesService : IJokesService
     {
-        private WebClient _webClient = new WebClient();
+        private IHttpClientFactory _httpClientFactory;
         private string jokesUrl = "https://official-joke-api.appspot.com/jokes";
 
-        public ICollection<Joke> GetJokes()
+        public JokesService(IHttpClientFactory httpClientFactory)
         {
-            string jokesJson = _webClient.DownloadString(String.Format("{0}/{1}", this.jokesUrl, "ten"));
-            return JsonSerializer.Deserialize<Collection<Joke>>(jokesJson, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            _httpClientFactory = httpClientFactory;
+        }
+
+        public async Task<List<Joke>> GetJokes()
+        {
+            HttpClient httpClient = _httpClientFactory.CreateClient();
+            string url = String.Format("{0}/{1}", this.jokesUrl, "ten");
+            HttpRequestMessage httpRequest = new HttpRequestMessage()
+            {
+                RequestUri = new Uri(url),
+                Method = HttpMethod.Get
+            };
+
+            HttpResponseMessage httpResponse = await httpClient.SendAsync(httpRequest);
+
+            List<Joke> jokes = new List<Joke>();
+            if(httpResponse.IsSuccessStatusCode)
+            {
+                using var responseStream = httpResponse.Content.ReadAsStringAsync();
+
+                try
+                {
+                    jokes = JsonSerializer.Deserialize<List<Joke>>(
+                        responseStream.Result,
+                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+
+
+            return jokes;
         }
 
         // get 10 random jokes by type //
-        public ICollection<Joke> GetJokes(string type)
+        public async Task<List<Joke>> GetJokes(string type)
         {
-            string jokesJson = _webClient.DownloadString(String.Format("{0}/{1}/ten", this.jokesUrl,type));
-            return JsonSerializer.Deserialize<Collection<Joke>>(jokesJson, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+            List<Joke> jokes = await this.GetJokes();
+
+            return jokes.FindAll((x)=>x.Type==type);
         }
 
-        public Joke GetRandomJoke()
+        public async Task<Joke> GetRandomJoke()
         {
-            string jokeJson = _webClient.DownloadString(String.Format("{0}/{1}", this.jokesUrl, "random"));
-            return JsonSerializer.Deserialize<Joke>(jokeJson, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            HttpClient httpClient = _httpClientFactory.CreateClient();
+            string url = String.Format("{0}/{1}", this.jokesUrl, "random");
+            HttpRequestMessage httpRequest = new HttpRequestMessage()
+            {
+                RequestUri = new Uri(url),
+                Method = HttpMethod.Get
+            };
+
+            HttpResponseMessage httpResponse = await httpClient.SendAsync(httpRequest);
+
+            Joke joke = new Joke();
+            if (httpResponse.IsSuccessStatusCode)
+            {
+                using var responseStream = httpResponse.Content.ReadAsStringAsync();
+
+                try
+                {
+                    joke = JsonSerializer.Deserialize<Joke>(
+                        responseStream.Result,
+                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+
+
+            return joke;
         }
     }
 }

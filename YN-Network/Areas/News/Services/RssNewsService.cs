@@ -20,9 +20,36 @@ namespace YN_Network.Areas.News.Services
             _context = context;
             _httpClientFactory = httpClientFactory;
         }
-        public ICollection<Article> GetTopHeadlines()
-        {
 
+        public async Task<List<Article>> GetTopHeadlinesAsync()
+        {
+            List<Source> sources = _context.NewsSources.ToList();
+
+            List<Article> articles = new List<Article>();
+            foreach (Source source in sources)
+            {
+                var sourceResult = await this.ParseRss(source);
+                articles.AddRange(sourceResult);
+            }
+            return articles.OrderByDescending(x => x.PublishedAt).ToList();
+        }
+
+
+
+        public async Task<List<Article>> GetTopHeadlinesAsync(int limit)
+        {
+            var items = await this.GetTopHeadlinesAsync();
+            return items.Take(limit).ToList();
+
+        }
+
+        public Task<List<Article>> GetTopHeadlinesAsync(string country)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Article> GetTopHeadlines()
+        {
             List<Source> sources = _context.NewsSources.ToList();
 
             List<Article> articles = new List<Article>();
@@ -34,13 +61,13 @@ namespace YN_Network.Areas.News.Services
             return articles.OrderByDescending(x => x.PublishedAt).ToList();
         }
 
-        public ICollection<Article> GetTopHeadlines(int limit)
+        public List<Article> GetTopHeadlines(int limit)
         {
             return this.GetTopHeadlines().Take(limit).ToList();
         }
 
 
-        public ICollection<Article> GetTopHeadlines(string country)
+        public List<Article> GetTopHeadlines(string country)
         {
             return this.GetTopHeadlines().Where(x => x.Source.CountryCode == country).ToList();
         }
@@ -89,5 +116,6 @@ namespace YN_Network.Areas.News.Services
             }
             return articles;
         }
+
     }
 }

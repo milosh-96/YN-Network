@@ -1,0 +1,60 @@
+﻿@inject Services.INewsService _newsService
+
+@if (Loading)
+{
+    <div>Please wait...</div>
+
+}
+else
+{
+    @foreach (YN_Network.Areas.News.Models.Article Item in Items)
+    {
+        <ArticleItem Article="@Item"></ArticleItem>
+
+    }
+    <button class="button" @onclick="LoadMore">Load more</button>
+
+}
+
+
+@code {
+    public List<Models.Article> Items { get; set; } = new List<Models.Article>() { };
+
+    [Parameter]
+    public int Limit { get; set; } = 10;
+
+    public bool Loading { get; set; } = true;
+
+
+    private async void LoadMore()
+    {
+        this.StateHasChanged();
+        Limit = Limit + 10;
+        var result = await _newsService.GetTopHeadlinesAsync(Limit);
+
+        if (result.Count > 0)
+        {
+            Items.AddRange(result.Skip(Limit-10));
+        }
+        this.StateHasChanged();
+    }
+
+    public async Task GetArticlesAsync(int limit)
+    {
+        Loading = true;
+        var result = await _newsService.GetTopHeadlinesAsync(limit);
+
+        if (result.Count > 0)
+        {
+            Items = result;
+            Loading = false;
+        }
+        this.StateHasChanged();
+    }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetArticlesAsync(Limit);
+    }
+}

@@ -24,18 +24,18 @@ namespace YN_Network.Areas.Jokes.Controllers
             _jokesServices = jokesService;
         }
 
-        public IActionResult Index(string type)
+        public async Task<IActionResult> IndexAsync(string type)
         {
             
             JokesIndexViewModel viewModel = new JokesIndexViewModel();
             if(type != null)
             {
-                viewModel.Jokes = _jokesServices.GetJokes(type);
+                viewModel.Jokes = await _jokesServices.GetJokes(type);
                 viewModel.FilteredByType = true;
             }
             else
             {
-                viewModel.Jokes = _jokesServices.GetJokes();
+                viewModel.Jokes = await _jokesServices.GetJokes();
 
             }
             return View(viewModel);
