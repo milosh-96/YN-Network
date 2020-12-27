@@ -7,7 +7,7 @@
         {
             @foreach (YN_Network.Areas.Jokes.Models.Joke joke in Model.Jokes)
             {
-               await Html.RenderPartialAsync("../Partials/_JokeItem", joke);
+               <component type="typeof(YN_Network.Areas.Jokes.ViewComponents.JokeItem)" param-Joke="@joke" render-mode="ServerPrerendered" />
 
             }
        }

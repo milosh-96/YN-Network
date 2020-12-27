@@ -28,24 +28,17 @@
         <Folder Include="ViewModels\" />
         <Folder Include="Areas\Search\Models\" />
         <Folder Include="Areas\Search\Services\" />
-        <Folder Include="Areas\Jokes\" />
         <Folder Include="Areas\Jokes\Controllers\" />
         <Folder Include="Areas\Jokes\Services\" />
-        <Folder Include="Areas\Jokes\Views\" />
         <Folder Include="Areas\Jokes\Models\" />
         <Folder Include="Areas\Jokes\Views\Home\" />
         <Folder Include="Areas\Jokes\ViewModels\" />
         <Folder Include="Services\" />
-        <Folder Include="Areas\Comics\" />
         <Folder Include="Areas\Comics\Services\" />
         <Folder Include="Areas\Comics\Models\" />
         <Folder Include="Areas\News\Views\Partials\" />
         <Folder Include="Areas\News\Views\Widgets\" />
-        <Folder Include="Areas\Comics\Views\" />
-        <Folder Include="Areas\Comics\Views\Widgets\" />
         <Folder Include="wwwroot\images\" />
-        <Folder Include="Areas\Jokes\Views\Widgets\" />
-        <Folder Include="Areas\Jokes\Views\Partials\" />
         <Folder Include="Areas\Questions\Models\" />
         <Folder Include="Views\Shared\Ads\" />
     </ItemGroup>

@@ -6,9 +6,8 @@
         @{
            await Html.RenderPartialAsync("../../Areas/Search/Views/Widgets/_QuerySearchWidget");
 
-           await Html.RenderPartialAsync("../../Areas/Comics/Views/Widgets/_HomePageComicWidget", Model.Comic);
-           await Html.RenderPartialAsync("../../Areas/Jokes/Views/Widgets/_HomePageJokeWidget", Model.Joke);
-
+           <component type="typeof(YN_Network.Areas.Comics.ViewComponents.ComicItem)" param-Comic="@Model.Comic" render-mode="ServerPrerendered" />
+          <component type="typeof(YN_Network.Areas.Jokes.ViewComponents.JokeItemWidget)" render-mode="ServerPrerendered" />
         }
 
     </div>

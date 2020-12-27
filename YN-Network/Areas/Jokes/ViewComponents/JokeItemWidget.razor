@@ -1,0 +1,21 @@
+﻿@namespace YN_Network.Areas.Jokes.ViewComponents
+
+@inject Services.IJokesService _jokesService
+<div>
+    <h2>Joke</h2>
+    <small>Provided by <a href="#">Official Joke API</a></small>
+    <JokeItem Joke="@Joke"></JokeItem>
+</div>
+@code {
+    public Models.Joke Joke { get; set; } = new Models.Joke();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var getJoke = await _jokesService.GetRandomJoke();
+
+        Joke = getJoke;
+
+       
+
+    }
+}

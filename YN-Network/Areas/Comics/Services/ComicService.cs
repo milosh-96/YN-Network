@@ -30,7 +30,7 @@ namespace YN_Network.Areas.Comics.Services
                 try
                 {
                     using var response = comicJson.Content.ReadAsStringAsync();
-                    return JsonSerializer.Deserialize<Comic>(
+                    return  JsonSerializer.Deserialize<Comic>(
                         response.Result,
                         new JsonSerializerOptions
                         {

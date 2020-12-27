@@ -32,11 +32,11 @@ namespace YN_Network.Controllers
 
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             HomeViewModel viewModel = new HomeViewModel();
-            viewModel.Comic = _comicService.GetTodayComic().Result;
-            viewModel.Joke = _jokesService.GetRandomJoke().Result;
+            viewModel.Comic = await _comicService.GetTodayComic();
+            viewModel.Joke = await _jokesService.GetRandomJoke();
             return View(viewModel);
         }
 
