@@ -12,9 +12,6 @@ using YN_Network.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using YN_Network.Areas.Search.Services;
-using YN_Network.Areas.Jokes.Services;
-using YN_Network.Areas.Comics.Services;
 using YN_Network.Areas.News.Services;
 using YN_Network.Areas.Questions.Services;
 
@@ -42,9 +39,6 @@ namespace YN_Network
             services.AddServerSideBlazor();
             services.AddRazorPages().AddRazorRuntimeCompilation();
 
-            services.AddScoped<IQueryService, QueryService>();
-            services.AddScoped<IJokesService, JokesService>();
-            services.AddScoped<IComicService, ComicService>();
             services.AddScoped<INewsService, RssNewsService>();
             services.AddScoped<IQuestionService, QuestionService>();
 
@@ -79,14 +73,7 @@ namespace YN_Network
                    defaults: new { controller = "Home", action = "Index" },
                    pattern: "{area:exists}/{action=Index}/{id?}/{slug?}"
                  );
-                endpoints.MapControllerRoute(
-                    name: "Search",
-                    pattern: "{area:exists}/{controller=Query}/{action=Index}/{query?}"
-                  );
-                endpoints.MapControllerRoute(
-                    name: "Jokes",
-                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{type?}"
-                    );
+        
                 endpoints.MapControllerRoute(
                     name: "News",
                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{category?}"

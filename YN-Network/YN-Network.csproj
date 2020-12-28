@@ -20,22 +20,9 @@
         <PackageReference Include="Slugify.Core" Version="2.3.0" />
     </ItemGroup>
     <ItemGroup>
-        <Folder Include="Areas\Activity\Controllers\" />
-        <Folder Include="Areas\Activity\Data\" />
-        <Folder Include="Areas\Activity\Models\" />
-        <Folder Include="Areas\Activity\Views\" />
         <Folder Include="Areas\News\Data\" />
         <Folder Include="ViewModels\" />
-        <Folder Include="Areas\Search\Models\" />
-        <Folder Include="Areas\Search\Services\" />
-        <Folder Include="Areas\Jokes\Controllers\" />
-        <Folder Include="Areas\Jokes\Services\" />
-        <Folder Include="Areas\Jokes\Models\" />
-        <Folder Include="Areas\Jokes\Views\Home\" />
-        <Folder Include="Areas\Jokes\ViewModels\" />
         <Folder Include="Services\" />
-        <Folder Include="Areas\Comics\Services\" />
-        <Folder Include="Areas\Comics\Models\" />
         <Folder Include="Areas\News\Views\Partials\" />
         <Folder Include="Areas\News\Views\Widgets\" />
         <Folder Include="wwwroot\images\" />
@@ -44,11 +31,5 @@
     </ItemGroup>
     <ItemGroup>
       <None Remove="app.db" />
-    </ItemGroup>
-    <ItemGroup>
-      <Content Update="Areas\Search\Pages\_ViewStart.cshtml">
-        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      </Content>
     </ItemGroup>
 </Project>

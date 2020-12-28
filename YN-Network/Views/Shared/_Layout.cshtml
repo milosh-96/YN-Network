@@ -49,10 +49,7 @@
   : "" )" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     <a class="menu-item @((string)ViewContext.RouteData.Values["area"] == "Questions" ? "active" : "" )" asp-area="Questions" asp-controller="Home" asp-action="Index">Questions & Answers</a>
                     <a class="menu-item @((string)ViewContext.RouteData.Values["area"] == "News" ? "active" : "" )" asp-area="News" asp-controller="Home" asp-action="Index">News</a>
-                    <a class="menu-item @((string)ViewContext.RouteData.Values["area"] == "Games" ? "active" : "" )" href="#">Games</a>
                     <a class="menu-item @((string)ViewContext.RouteData.Values["area"] == "Weather" ? "active" : "" )" href="#">Weather</a>
-                    <a class="menu-item @((string)ViewContext.RouteData.Values["area"] == "Comics" ? "active" : "" )" href="#">Comics</a>
-                    <a class="menu-item @((string)ViewContext.RouteData.Values["area"] == "Jokes" ? "active" : "" )" asp-area="Jokes" asp-controler="Home" asp-action="Index">Jokes</a>
                     <a class="menu-item @((string)ViewContext.RouteData.Values["area"] == "Countries" ? "active" : "" )" href="#">Countries</a>
                 </nav>
             </div>

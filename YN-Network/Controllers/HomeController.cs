@@ -5,8 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using YN_Network.Areas.Comics.Services;
-using YN_Network.Areas.Jokes.Services;
 using YN_Network.Areas.News.Services;
 using YN_Network.Models;
 
@@ -17,26 +15,19 @@ namespace YN_Network.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IComicService _comicService;
         private readonly INewsService _newsService;
-        private readonly IJokesService _jokesService;
         public HomeController(ILogger<HomeController> logger,
-            IComicService comicService,
-            INewsService newsService,
-            IJokesService jokesService)
+            INewsService newsService
+            )
         {
             _logger = logger;
-            _comicService = comicService;
             _newsService = newsService;
-            _jokesService = jokesService; 
 
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             HomeViewModel viewModel = new HomeViewModel();
-            viewModel.Comic = await _comicService.GetTodayComic();
-            viewModel.Joke = await _jokesService.GetRandomJoke();
             return View(viewModel);
         }
 

@@ -3,13 +3,7 @@
 <div id="home-page" class="row">
 
     <div class="columns small-12 medium-3" id="home-comic">
-        @{
-           await Html.RenderPartialAsync("../../Areas/Search/Views/Widgets/_QuerySearchWidget");
-
-           <component type="typeof(YN_Network.Areas.Comics.ViewComponents.ComicItem)" param-Comic="@Model.Comic" render-mode="ServerPrerendered" />
-          <component type="typeof(YN_Network.Areas.Jokes.ViewComponents.JokeItemWidget)" render-mode="ServerPrerendered" />
-        }
-
+  
     </div>
     <div class="columns small-12 medium-6" id="home-news">
         <component type="typeof(YN_Network.Areas.News.ViewComponents.ArticlesList)" render-mode="ServerPrerendered" />
@@ -19,4 +13,4 @@
            await Html.RenderPartialAsync("../../Views/Shared/Ads/ResponsiveAd");
         }
     </div>
-</div>
+</div>s
