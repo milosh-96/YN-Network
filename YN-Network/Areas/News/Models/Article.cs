@@ -29,19 +29,18 @@ namespace YN_Network.Areas.News.Models
 
     public class Source
     {
-        [Key]
         public int Id { get; set; }
 
-        [Column(TypeName = "string")]
+        [Column(TypeName = "varchar(256)")]
         public string Name { get; set; }
 
-        [Column(TypeName = "string")]
+        [Column(TypeName = "text")]
         public string RssFeedUrl { get; set; }
 
-        [Column(TypeName = "string")]
+        [Column(TypeName = "varchar(20)")]
         public string CountryCode { get; set; }
 
-        [Column(TypeName = "string")]
+        [Column(TypeName = "text")]
         public string SourceLogoUrl { get; set; }
     }
 }

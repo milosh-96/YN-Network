@@ -30,10 +30,10 @@ namespace YN_Network
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            options.UseMySQL(Configuration.GetConnectionString("MySQLConnection")));
+            //options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDefaultIdentity<IdentityUser<Guid>>(options => options.SignIn.RequireConfirmedAccount = true)
+        .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddHttpClient();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddServerSideBlazor();

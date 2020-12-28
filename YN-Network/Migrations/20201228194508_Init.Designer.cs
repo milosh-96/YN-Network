@@ -6,33 +6,35 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YN_Network.Data;
 
-namespace YN_Network.Data.Migrations
+namespace YN_Network.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200611033034_CreateQuestionsAndAnswers")]
-    partial class CreateQuestionsAndAnswers
+    [Migration("20201228194508_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.4");
+                .HasAnnotation("ProductVersion", "3.1.4")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("TEXT");
+                    b.Property<byte[]>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varbinary(16)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("varchar(256)")
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedName")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("varchar(256)")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
@@ -44,21 +46,21 @@ namespace YN_Network.Data.Migrations
                     b.ToTable("AspNetRoles");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
-                    b.Property<string>("RoleId")
+                    b.Property<byte[]>("RoleId")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varbinary(16)");
 
                     b.HasKey("Id");
 
@@ -67,56 +69,57 @@ namespace YN_Network.Data.Migrations
                     b.ToTable("AspNetRoleClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser<System.Guid>", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("TEXT");
+                    b.Property<byte[]>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varbinary(16)");
 
                     b.Property<int>("AccessFailedCount")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<string>("Email")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("varchar(256)")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("timestamp");
 
                     b.Property<string>("NormalizedEmail")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("varchar(256)")
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedUserName")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("varchar(256)")
                         .HasMaxLength(256);
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("varchar(256)")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
@@ -131,21 +134,21 @@ namespace YN_Network.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
-                    b.Property<string>("UserId")
+                    b.Property<byte[]>("UserId")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varbinary(16)");
 
                     b.HasKey("Id");
 
@@ -154,22 +157,22 @@ namespace YN_Network.Data.Migrations
                     b.ToTable("AspNetUserClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("varchar(128)")
                         .HasMaxLength(128);
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("varchar(128)")
                         .HasMaxLength(128);
 
                     b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
-                    b.Property<string>("UserId")
+                    b.Property<byte[]>("UserId")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varbinary(16)");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -178,13 +181,13 @@ namespace YN_Network.Data.Migrations
                     b.ToTable("AspNetUserLogins");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("TEXT");
+                    b.Property<byte[]>("UserId")
+                        .HasColumnType("varbinary(16)");
 
-                    b.Property<string>("RoleId")
-                        .HasColumnType("TEXT");
+                    b.Property<byte[]>("RoleId")
+                        .HasColumnType("varbinary(16)");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -193,35 +196,58 @@ namespace YN_Network.Data.Migrations
                     b.ToTable("AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("TEXT");
+                    b.Property<byte[]>("UserId")
+                        .HasColumnType("varbinary(16)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("varchar(128)")
                         .HasMaxLength(128);
 
                     b.Property<string>("Name")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("varchar(128)")
                         .HasMaxLength(128);
 
                     b.Property<string>("Value")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("YN_Network.Areas.News.Models.Source", b =>
+                {
+                    b.Property<byte[]>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varbinary(16)");
+
+                    b.Property<string>("CountryCode")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("varchar(256)");
+
+                    b.Property<string>("RssFeedUrl")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SourceLogoUrl")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("NewsSources");
+                });
+
             modelBuilder.Entity("YN_Network.Areas.Questions.Models.Answer", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<byte[]>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("varbinary(16)");
 
                     b.Property<string>("Explanation")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<bool>("OptionA")
                         .HasColumnType("bool");
@@ -229,11 +255,11 @@ namespace YN_Network.Data.Migrations
                     b.Property<bool>("OptionB")
                         .HasColumnType("bool");
 
-                    b.Property<int?>("QuestionId")
-                        .HasColumnType("INTEGER");
+                    b.Property<byte[]>("QuestionId")
+                        .HasColumnType("varbinary(16)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("TEXT");
+                    b.Property<byte[]>("UserId")
+                        .HasColumnType("varbinary(16)");
 
                     b.HasKey("Id");
 
@@ -246,36 +272,36 @@ namespace YN_Network.Data.Migrations
 
             modelBuilder.Entity("YN_Network.Areas.Questions.Models.Question", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<byte[]>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("varbinary(16)");
 
-                    b.Property<DateTimeOffset>("CreatedAt")
-                        .HasColumnType("DateTime");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime");
 
-                    b.Property<DateTimeOffset>("DeletedAt")
-                        .HasColumnType("DateTime");
+                    b.Property<DateTime>("DeletedAt")
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Description")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<string>("OptionA")
-                        .HasColumnType("string");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("OptionB")
-                        .HasColumnType("string");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("Title")
-                        .HasColumnType("string");
+                        .HasColumnType("varchar(500)");
 
-                    b.Property<DateTimeOffset>("UpdatedAt")
-                        .HasColumnType("DateTime");
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("TEXT");
+                    b.Property<byte[]>("UserId")
+                        .HasColumnType("varbinary(16)");
 
                     b.Property<int>("Views")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -284,51 +310,51 @@ namespace YN_Network.Data.Migrations
                     b.ToTable("Questions");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<System.Guid>", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<System.Guid>", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<System.Guid>", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<System.Guid>", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -341,14 +367,14 @@ namespace YN_Network.Data.Migrations
                         .WithMany("Answers")
                         .HasForeignKey("QuestionId");
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<System.Guid>", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("YN_Network.Areas.Questions.Models.Question", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<System.Guid>", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
                 });

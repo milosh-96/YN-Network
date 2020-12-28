@@ -37,7 +37,7 @@ namespace YN_Network.Areas.Questions.Controllers
         }
 
         // GET: Questions/Questions/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)
             {
@@ -82,7 +82,7 @@ namespace YN_Network.Areas.Questions.Controllers
         }
 
         // GET: Questions/Questions/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(Guid id)
         {
             if (id == null)
             {
@@ -102,7 +102,7 @@ namespace YN_Network.Areas.Questions.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,OptionA,OptionB")] Question question)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Title,Description,OptionA,OptionB")] Question question)
         {
             if (id != question.Id)
             {
@@ -133,7 +133,7 @@ namespace YN_Network.Areas.Questions.Controllers
         }
 
         // GET: Questions/Questions/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null)
             {
@@ -153,7 +153,7 @@ namespace YN_Network.Areas.Questions.Controllers
         // POST: Questions/Questions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
             var question = await _context.Questions.FindAsync(id);
             _context.Questions.Remove(question);
@@ -161,7 +161,7 @@ namespace YN_Network.Areas.Questions.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool QuestionExists(int id)
+        private bool QuestionExists(Guid id)
         {
             return _context.Questions.Any(e => e.Id == id);
         }
